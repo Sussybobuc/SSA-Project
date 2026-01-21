@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Định hướng chuyên ngành</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- STARTUP SCREEN -->
+<div id="startup">
+<img src="logo.png" alt="Quiz AI Logo" class="logo">
+</div>
+<h1>Chọn nhóm ngành bạn đang theo học</h1>
+
+<div class="container">
+
+  <!-- CÔNG NGHỆ THÔNG TIN -->
+  <div class="column active">
+    <div class="column-title">Ngành Công nghệ thông tin</div>
+
+    <button onclick="goNext()">Công nghệ thông tin</button>
+    <button onclick="goNext()">Kỹ thuật phần mềm</button>
+    <button onclick="goNext()">Trí tuệ nhân tạo</button>
+    <button onclick="goNext()">Khoa học dữ liệu ứng dụng</button>
+    <button onclick="goNext()">An toàn thông tin</button>
+    <button onclick="goNext()">Vi mạch bán dẫn</button>
+    <button onclick="goNext()">Công nghệ ô tô số</button>
+    <button onclick="goNext()">Hệ thống thông tin</button>
+    <button onclick="goNext()">Thiết kế đồ hoạ & mỹ thuật số</button>
+  </div>
+
+  <!-- TRUYỀN THÔNG -->
+  <div class="column disabled">
+    <div class="column-title">Ngành Công nghệ truyền thông</div>
+    <button onclick="showToast()">Truyền thông đa phương tiện</button>
+    <button onclick="showToast()">Quan hệ công chúng</button>
+    <button onclick="showToast()">Marketing tích hợp</button>
+    <button onclick="showToast()">Truyền thông thương hiệu</button>
+  </div>
+
+  <!-- NGÔN NGỮ -->
+  <div class="column disabled">
+    <div class="column-title">Khối Ngành Ngôn ngữ</div>
+    <button onclick="showToast()">Ngôn ngữ Anh</button>
+    <button onclick="showToast()">Tiếng Anh thương mại</button>
+    <button onclick="showToast()">Ngôn ngữ Hàn Quốc</button>
+    <button onclick="showToast()">Tiếng Trung thương mại</button>
+  </div>
+
+  <!-- LUẬT -->
+  <div class="column disabled">
+    <div class="column-title">Ngành Luật</div>
+    <button onclick="showToast()">Luật</button>
+    <button onclick="showToast()">Luật kinh tế</button>
+  </div>
+
+  <!-- QUẢN TRỊ -->
+  <div class="column disabled">
+    <div class="column-title">Quản trị kinh doanh</div>
+    <button onclick="showToast()">Marketing</button>
+    <button onclick="showToast()">Thương mại điện tử</button>
+    <button onclick="showToast()">Business Analytics</button>
+    <button onclick="showToast()">Fintech</button>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast">Ngành này sẽ được phát triển trong thời gian tới 🚀</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
