@@ -14,20 +14,11 @@
     Chọn chuyên ngành hẹp phù hợp
   </button>
 
-  <!-- redirect đến trang quiz.html theo ngành -->
-  <script>
-  function startQuiz(){
-    const params = new URLSearchParams(window.location.search);
-    const subject = params.get("subject");
-
-    window.location.href = "quiz.html?subject=" + subject;
-  }
-</script>
-
   <button onclick="location.href='career.html'">
     Cơ hội nghề nghiệp
   </button>
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
