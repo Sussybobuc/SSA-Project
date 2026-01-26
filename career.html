@@ -7,13 +7,27 @@
 </head>
 <body>
 
+
+
 <h1>Tư vấn cơ hội nghề nghiệp</h1>
 
-<p>Chatbot AI sẽ được tích hợp tại đây.</p>
 
-<div class="chat-box">
-  <p><i>Đang phát triển...</i></p>
+<div class="ai-box">
+  <h2>Hỏi AI tư vấn</h2>
+
+<textarea id="career-question" placeholder="Hỏi về cơ hội nghề nghiệp..."></textarea>
+<button onclick="askCareerAI()">Hỏi AI</button>
+
+<div id="career-answer"></div>
+
 </div>
+<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
 
 </body>
 </html>

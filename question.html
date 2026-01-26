@@ -6,6 +6,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<iframe 
+  src="music.html"
+  id="musicFrame"
+  style="
+    position: fixed;
+    width: 0;
+    height: 0;
+    border: 0;
+    visibility: hidden;
+  ">
+</iframe>
 
 <h1>Bạn đang phân vân về điều gì?</h1>
 
@@ -18,6 +29,12 @@
     Cơ hội nghề nghiệp
   </button>
 </div>
+<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 
 <script src="script.js"></script>
 </body>

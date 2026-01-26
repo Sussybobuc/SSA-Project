@@ -1,34 +1,58 @@
 window.addEventListener("DOMContentLoaded", () => {
   const startup = document.getElementById("startup");
   const logo = document.querySelector(".logo");
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicToggle");
 
-  const APP_VERSION = "1.01";           // đổi khi có cập nhật lớn
-  const VERSION_KEY = "quizai_version";
+  const MUSIC_KEY = "bg_music_state";
+  music.volume = 1;
 
-  // Nếu đã xem splash của version này → bỏ qua
-  if (localStorage.getItem(VERSION_KEY) === APP_VERSION) {
-    startup.remove();
-    return;
-  }
-
-  // Ghi nhận version đã xem
-  localStorage.setItem(VERSION_KEY, APP_VERSION);
-
-  // Hiện startup từ từ
+  /* ===== SPLASH LOGO ===== */
   startup.classList.add("show");
 
-  // Sau 2s: dừng xoay + về ngang + fade-out
   setTimeout(() => {
     logo.classList.add("stop");
     startup.classList.add("hide");
 
-    // Xóa startup sau khi fade-out
     setTimeout(() => {
       startup.remove();
-    }, 1000);
 
-  }, 1500); // thời gian hiển thị logo, 1500s là ổn
+      /* ===== TỰ CHẠY NHẠC SAU SPLASH ===== */
+      const state = localStorage.getItem(MUSIC_KEY);
+      if (state !== "pause") {
+        music.play().catch(() => {
+          document.addEventListener(
+            "click",
+            () => music.play(),
+            { once: true }
+          );
+        });
+        btn.textContent = "🔊";
+        localStorage.setItem(MUSIC_KEY, "play");
+      } else {
+        btn.textContent = "🔇";
+      }
+
+    }, 800);
+  }, 1500);
 });
+
+/* ===== NÚT BẬT / TẮT ===== */
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicToggle");
+  const MUSIC_KEY = "bg_music_state";
+
+  if (music.paused) {
+    music.play();
+    btn.textContent = "🔊";
+    localStorage.setItem(MUSIC_KEY, "play");
+  } else {
+    music.pause();
+    btn.textContent = "🔇";
+    localStorage.setItem(MUSIC_KEY, "pause");
+  }
+}
 
 //redirect đến cùng một trang question nhưng sẽ có value riêng
 function goQuestion(subject){
@@ -145,3 +169,44 @@ function showToast() {
     resultBox.classList.add("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+  async function askCareerAI() {
+  const question = document.getElementById("career-question").value;
+  const box = document.getElementById("career-answer");
+
+  box.textContent = "AI đang trả lời...";
+
+  const prompt = `
+Bạn là cố vấn hướng nghiệp CNTT tại Việt Nam.
+Câu hỏi của học sinh:
+"${question}"
+
+Hãy trả lời ngắn gọn, dễ hiểu, thực tế.
+`;
+
+  try {
+    const res = await fetch("http://localhost:11434/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "llama3:8b",
+        prompt,
+        stream: false
+      })
+    });
+
+    const data = await res.json();
+    box.textContent = data.response;
+
+  } catch {
+    box.textContent = "Không kết nối được AI.";
+  }
+}
+const music = document.getElementById("bgMusic");
+
+function startMusicOnce() {
+  music.play().catch(() => {});
+  document.removeEventListener("click", startMusicOnce);
+}
+
+// Chạy nhạc khi user click lần đầu
+document.addEventListener("click", startMusicOnce);

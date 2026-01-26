@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
 <!-- STARTUP SCREEN -->
 <div id="startup">
 <img src="logo.png" alt="Quiz AI Logo" class="logo">
@@ -68,7 +70,15 @@
 <!-- TOAST -->
 <div id="toast">Ngành này sẽ được phát triển trong thời gian tới 🚀</div>
 
+<!-- NÚT BẬT / TẮT NHẠC -->
+<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script src="script.js"></script>
+
 </body>
 
 </html>
