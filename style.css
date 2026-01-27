@@ -2,6 +2,14 @@ body {
   font-family: Arial, sans-serif;
   background: #f6f7fb;
   padding: 30px;
+  margin: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
@@ -33,16 +41,30 @@ h1 {
   text-align: center;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* căn giữa ngang */
+  gap: 20px;
+  margin-top: 40px;
 }
 
+button {
+  width: 420px;          /* 👈 chỉnh hẹp / rộng tại đây */
+  max-width: 90%;
+  padding: 18px 24px;    /* 👈 làm nút bự */
+  font-size: 18px;       /* 👈 chữ to */
+  border-radius: 12px;
+  border: 1px solid #d0d7de;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+}
+button:hover{
+  background: #8aef8a;
+  transform: translateY(-2px);
+}
 /* Ngành CNTT – active */
 .column.active button {
   background: #2563eb;
@@ -179,20 +201,49 @@ textarea {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999;
 
   background: #1e293b;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 18px;
-  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
 
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  transform: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.25s ease;
 }
 
 .music-btn:hover {
   background: #334155;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+.music-btn:active {
+  transform: scale(0.95);
+}
+.music-btn.muted {
+  background: #991b1b;
+  animation: shake 0.35s ease;
+}
+@keyframes shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-2px, 0) rotate(-5deg); }
+  50% { transform: translate(2px, 0) rotate(5deg); }
+  75% { transform: translate(-2px, 0) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.music-btn:not(.muted) {
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }

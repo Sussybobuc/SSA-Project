@@ -6,20 +6,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<iframe 
-  src="music.html"
-  id="musicFrame"
-  style="
-    position: fixed;
-    width: 0;
-    height: 0;
-    border: 0;
-    visibility: hidden;
-  ">
-</iframe>
 
 <h1>Bạn đang phân vân về điều gì?</h1>
-
+<!-- Nút chọn chuyển hướng -->
 <div class="grid">
   <button onclick="startQuiz()">
     Chọn chuyên ngành hẹp phù hợp
@@ -29,6 +18,7 @@
     Cơ hội nghề nghiệp
   </button>
 </div>
+
 <button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
 
 <audio id="bgMusic" loop>

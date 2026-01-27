@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       startup.remove();
+      startup.style.transform = "none";
 
       /* ===== TỰ CHẠY NHẠC SAU SPLASH ===== */
       const state = localStorage.getItem(MUSIC_KEY);
@@ -47,10 +48,12 @@ function toggleMusic() {
     music.play();
     btn.textContent = "🔊";
     localStorage.setItem(MUSIC_KEY, "play");
+    btn.classList.remove("muted");
   } else {
     music.pause();
     btn.textContent = "🔇";
     localStorage.setItem(MUSIC_KEY, "pause");
+    btn.classList.add("muted");
   }
 }
 
@@ -102,10 +105,10 @@ function showToast() {
   const subject = params.get("subject") || "it";
 
   const quizTitle = document.getElementById("quizTitle");
-  if(subject === "se") quizTitle.innerText = "Quiz Kỹ thuật phần mềm";
-  else if(subject === "ai") quizTitle.innerText = "Quiz Trí tuệ nhân tạo";
-  else if(subject === "ds") quizTitle.innerText = "Quiz Khoa học dữ liệu ứng dụng";
-  else if(subject === "sec") quizTitle.innerText = "Quiz An toàn thông tin";
+  if(subject === 'SE') quizTitle.innerText = "Quiz Kỹ thuật phần mềm";
+  else if(subject === 'AI') quizTitle.innerText = "Quiz Trí tuệ nhân tạo";
+  else if(subject === 'DS') quizTitle.innerText = "Quiz Khoa học dữ liệu ứng dụng";
+  else if(subject === 'SEC') quizTitle.innerText = "Quiz An toàn thông tin";
   else quizTitle.innerText = "Quiz tìm chuyên ngành hẹp phù hợp (CNTT)";
 
   // Quiz logic
@@ -126,7 +129,7 @@ function showToast() {
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const answered = getAnsweredCount();
     if (answered < 15) {
       alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 15 câu nhé!");
@@ -180,7 +183,7 @@ Bạn là cố vấn hướng nghiệp CNTT tại Việt Nam.
 Câu hỏi của học sinh:
 "${question}"
 
-Hãy trả lời ngắn gọn, dễ hiểu, thực tế.
+Hãy trả lời ngắn gọn, dễ hiểu, thực tế. Tất cả câu trả lời đều bằng tiếng Việt.
 `;
 
   try {
@@ -210,3 +213,4 @@ function startMusicOnce() {
 
 // Chạy nhạc khi user click lần đầu
 document.addEventListener("click", startMusicOnce);
+
