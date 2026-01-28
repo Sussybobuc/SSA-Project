@@ -1,3 +1,3 @@
 Todo
-- Fix not redirecting to the correct quiz
+- Storage method for data
 - Finish style for quiz

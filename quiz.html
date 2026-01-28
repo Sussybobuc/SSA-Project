@@ -8,8 +8,8 @@
 </head>
 
 <body>
-
-  <div class="container">
+  <!-- Đại gia đình quiz -->
+  <div class="quiz-container">
 
     <div class="topHeader">
       <h1 id="quizTitle">Quiz tìm chuyên ngành hẹp phù hợp (CNTT)</h1>
@@ -146,37 +146,43 @@
           </div>
         </form>
 
-        <footer class="footer">
-          <p>© SSA101 Group 2</p>
-        </footer>
       </div>
-
-      <!-- RIGHT: STICKY DESCRIPTION + RESULT -->
-      <div class="rightCol">
-        <div class="stickyBox">
-          <p class="desc">
-            Trả lời các câu hỏi bên dưới để hệ thống gợi ý chuyên ngành phù hợp nhất với bạn.
-            <br>
-            <b>Lưu ý:</b> Không có đúng/sai — chỉ là mức độ phù hợp.
-          </p>
-
-          <div id="resultBox" class="result hidden">
-            <h2>Kết quả gợi ý</h2>
-            <p id="top1" class="top"></p>
-            <p id="top2" class="top2"></p>
-            <div id="explain" class="explain"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
 
+
+  <!-- Đại gia đình sticky kết quả -->
+  <div class="sticky-wrapper">
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© SSA101 Group 2</p>
+    </footer> 
+
+    <!-- Kết quả và gợi ý -->
+    <div class="stickyBox">
+    <p class="desc">
+      Trả lời các câu hỏi bên dưới để hệ thống gợi ý chuyên ngành phù hợp nhất với bạn.
+      <br>
+      <b>Lưu ý:</b> Không có đúng/sai — chỉ là mức độ phù hợp.
+    </p>
+
+    <div id="resultBox" class="result hidden">
+      <h2>Kết quả gợi ý</h2>
+      <p id="top1" class="top"></p>
+      <p id="top2" class="top2"></p>
+      <div id="explain" class="explain"></div>
+    </div>
+    </div>
+  </div>
+
+
+<!-- Music button -->
+<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
+
 </body>
 </html>

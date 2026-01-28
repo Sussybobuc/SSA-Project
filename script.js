@@ -1,3 +1,6 @@
+//Scripts
+
+//Handles startup UI initialization and background music setup
 window.addEventListener("DOMContentLoaded", () => {
   const startup = document.getElementById("startup");
   const logo = document.querySelector(".logo");
@@ -100,7 +103,7 @@ function showToast() {
     return answered;
   }
 
-    // Change title based on subject chosen from Web1/Web2
+  //Change title based on subject chosen from Index.html/Question.html
   const params = new URLSearchParams(window.location.search);
   const subject = params.get("subject") || "it";
 
@@ -172,6 +175,8 @@ function showToast() {
     resultBox.classList.add("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  //AI chatbot
   async function askCareerAI() {
   const question = document.getElementById("career-question").value;
   const box = document.getElementById("career-answer");

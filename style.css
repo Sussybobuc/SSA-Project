@@ -20,7 +20,10 @@ h1 {
 .container {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
+}
+
+body .container {
+  display: block;
 }
 
 .column {
@@ -160,12 +163,6 @@ label {
   align-items: start;
 }
 
-/* dính với view doesn't work lmao*/
-.stickyBox{
-  position: sticky;
-  top: 20px;
-}
-
 /* cho điện thoại */
 @media (max-width: 900px){
   .pageLayout{
@@ -246,4 +243,24 @@ textarea {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+/* layout cho quiz.html */
+.quiz-container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sticky-wrapper{
+  position: fixed;
+  right: 40px;
+  top: 120px;
+  width: 320px;
+}
+
+.stickyBox{
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
