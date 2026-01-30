@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Testing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f6f7fb;
+    }
+    h1 {
+      color: #1e293b;
+      text-align: center;
+    }
+    .quiz-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .quiz-link {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #1e293b;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .quiz-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      background: #f97316;
+      color: white;
+    }
+    .quiz-link h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
+    .quiz-link p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    .status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .ready {
+      background: #10b981;
+      color: white;
+    }
+    .developing {
+      background: #f59e0b;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎓 Quiz System Test Page</h1>
+  <p style="text-align: center; color: #64748b;">Click on any quiz to test it</p>
+
+  <div class="quiz-links">
+    <a href="Quiz section/quiz.html?subject=CNTT" class="quiz-link">
+      <h3>📚 Công nghệ thông tin</h3>
+      <p>General IT Quiz</p>
+      <span class="status ready">✅ Ready</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=SE" class="quiz-link">
+      <h3>💻 Kỹ thuật phần mềm</h3>
+      <p>Software Engineering</p>
+      <span class="status ready">✅ Ready</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=AI" class="quiz-link">
+      <h3>🤖 Trí tuệ nhân tạo</h3>
+      <p>Artificial Intelligence</p>
+      <span class="status ready">✅ Ready</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=SEC" class="quiz-link">
+      <h3>🔒 An toàn thông tin</h3>
+      <p>Cybersecurity</p>
+      <span class="status ready">✅ Ready</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=KHCD" class="quiz-link">
+      <h3>📊 Khoa học dữ liệu</h3>
+      <p>Data Science</p>
+      <span class="status developing">🚧 Developing</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=VM" class="quiz-link">
+      <h3>🔌 Vi mạch bán dẫn</h3>
+      <p>Semiconductor</p>
+      <span class="status developing">🚧 Developing</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=CNGT" class="quiz-link">
+      <h3>🚗 Công nghệ ô tô số</h3>
+      <p>Automotive Tech</p>
+      <span class="status developing">🚧 Developing</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=HTTT" class="quiz-link">
+      <h3>🗄️ Hệ thống thông tin</h3>
+      <p>Information Systems</p>
+      <span class="status developing">🚧 Developing</span>
+    </a>
+
+    <a href="Quiz section/quiz.html?subject=GD" class="quiz-link">
+      <h3>🎨 Thiết kế đồ hoạ</h3>
+      <p>Graphic Design</p>
+      <span class="status developing">🚧 Developing</span>
+    </a>
+  </div>
+
+  <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 10px;">
+    <h3>📝 How to Test</h3>
+    <ol>
+      <li>Click on any quiz link above</li>
+      <li>Answer all 15 questions</li>
+      <li>Click "Xem kết quả" to see the results</li>
+      <li>Check if the correct quiz is displayed based on your selection</li>
+      <li>Verify that the scoring system works correctly</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <a href="index.html" style="color: #f97316; text-decoration: none; font-weight: bold;">← Back to Home</a>
+  </div>
+</body>
+</html>
