@@ -293,3 +293,11 @@ textarea {
   from{ opacity: 0; }
   to{ opacity: 1; }
 }
+
+/* Quiz set containers */
+.quiz-set {
+  display: none;
+}
+.quiz-set[style*="display: block"] {
+  display: block;
+}
