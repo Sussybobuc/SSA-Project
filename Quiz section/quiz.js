@@ -28,7 +28,6 @@ const subject = params.get("subject") || "CNTT";
 const quizTitle = document.getElementById("quizTitle");
 if(subject === 'SE') quizTitle.innerText = "Quiz Kỹ thuật phần mềm";
 else if(subject === 'AI') quizTitle.innerText = "Quiz Trí tuệ nhân tạo";
-else if(subject === 'KHCD') quizTitle.innerText = "Quiz Khoa học dữ liệu ứng dụng";
 else if(subject === 'SEC') quizTitle.innerText = "Quiz An toàn thông tin";
 else if(subject === 'VM') quizTitle.innerText = "Quiz Vi mạch bán dẫn";
 else if(subject === 'CNGT') quizTitle.innerText = "Quiz Công nghệ ô tô số";
@@ -54,6 +53,7 @@ const top1 = document.getElementById("top1");
 const top2 = document.getElementById("top2");
 const explain = document.getElementById("explain");
 const resetBtn = document.getElementById("resetBtn");
+const stickyWrap = document.querySelector(".sticky-wrapper");
 
 // Different majors for different quiz types
 const majorsByCNTT = {
@@ -128,6 +128,9 @@ form.addEventListener("submit", function(e) {
   const first = sorted[0];
   const second = sorted[1];
   // RESET animation mỗi lần chạy lại quiz
+  stickyWrap.classList.add("hidden");
+  void stickyWrap.offsetWidth; // ép browser reset animation
+  stickyWrap.classList.remove("hidden");
   resultBox.classList.add("hidden");
   void resultBox.offsetWidth; // ép browser reset animation
   resultBox.classList.remove("hidden");
@@ -145,12 +148,13 @@ form.addEventListener("submit", function(e) {
       <p>${second.desc}</p>
     </div>
   `;
-
+  stickyWrap.classList.remove("hidden");
   resultBox.classList.remove("hidden");
 });
 
 resetBtn.addEventListener("click", function() {
   form.reset();
+  stickyWrap.classList.add("hidden");
   resultBox.classList.add("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -184,3 +188,5 @@ function toggleMusic() {
     btn.classList.add("muted");
   }
 }
+
+
