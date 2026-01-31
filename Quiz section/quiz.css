@@ -25,6 +25,11 @@ label {
   .pageLayout{
     grid-template-columns: 1fr;
   }
+  .sticky-wrapper{
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
   .stickyBox{
     position: static;
   }
@@ -99,6 +104,11 @@ label {
   top: 30px;
   width: 320px;
   height: fit-content;
+  display: none;
+}
+
+.sticky-wrapper.visible {
+  display: block;
 }
 
 .stickyBox{
@@ -208,7 +218,7 @@ label {
   background: #f1f5f9;
   border-radius: 8px;
   font-size: 13px;
-  color: #64748b;
+  color: #152353;
 }
 
 /* Question box */
