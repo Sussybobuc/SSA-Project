@@ -81,7 +81,6 @@ function showToast() {
     window.location.href = "Quiz section/quiz.html?subject=" + subject;
   }
 
-
   const majors = (typeof window !== "undefined" && window.majors) ? window.majors : {};
   function resetScores() {
     Object.keys(majors).forEach(k => majors[k].score = 0);

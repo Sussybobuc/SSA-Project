@@ -20,6 +20,9 @@ h1 {
 .container {
   display: flex;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: fit-content;
 }
 
 body .container {
@@ -32,8 +35,18 @@ body .container {
   padding: 15px;
   min-width: 240px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-right: 15px;
+  margin: 0% auto;
 }
-
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
 .column-title {
   background: #f97316;
   color: white;
@@ -42,6 +55,7 @@ body .container {
   font-weight: bold;
   margin-bottom: 15px;
   text-align: center;
+
 }
 
 .grid {
@@ -56,12 +70,14 @@ button {
   width: 420px;          /* 👈 chỉnh hẹp / rộng tại đây */
   max-width: 90%;
   padding: 18px 24px;    /* 👈 làm nút bự */
-  font-size: 18px;       /* 👈 chữ to */
+  font-size: 20px;       /* 👈 chữ to */
   border-radius: 12px;
   border: 1px solid #d0d7de;
   background: #fff;
   cursor: pointer;
   transition: all 0.25s ease;
+  margin-right: 40px;
+
 
 }
 button:hover{
