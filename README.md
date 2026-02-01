@@ -1,3 +1,3 @@
 Todo
-- Storage method for data
 - Finish style for quiz
+- Make quiz for narrow major #IMPORTANT
