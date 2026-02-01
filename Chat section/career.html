@@ -24,12 +24,35 @@
 
   <!-- INPUT -->
   <footer class="chat-input">
-    <input id="userInput" type="text" placeholder="Nhập câu hỏi..." />
+    <input id="career-question" type="text" placeholder="Nhập câu hỏi..." />
     <button id="sendBtn">➤</button>
   </footer>
 </div>
 <button id="themeToggle" class="theme-btn">🌙</button>
 
+<div class="history-sidebar" id="historySidebar">
+  <!-- TOGGLE BUTTON -->
+  <button id="toggleHistory" class="toggle-history">☰</button>
+
+  <div class="history-header">
+    <h3>🕘 Lịch sử</h3>
+    <button class="clear-btn" onclick="openConfirm()">Xóa tất cả</button>
+  </div>
+
+  <ul id="aiHistoryList"></ul>
+</div>
+<!-- CONFIRM DELETE POPUP -->
+<div class="modal-overlay" id="confirmOverlay">
+  <div class="confirm-modal">
+    <h3>🗑️ Xóa toàn bộ lịch sử?</h3>
+    <p>Hành động này không thể hoàn tác.</p>
+
+    <div class="modal-actions">
+      <button class="btn cancel" onclick="closeConfirm()">Hủy</button>
+      <button class="btn danger" onclick="confirmClear()">Xóa</button>
+    </div>
+  </div>
+</div>
 <script src="chat.js"></script>
 </body>
 </html>
