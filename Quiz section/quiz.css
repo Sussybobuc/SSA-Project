@@ -117,12 +117,13 @@ label {
   right: 10px;
   top: 20px;
   width: 320px;
-  height: fit-content;
-  display: none;
-}
-
-.sticky-wrapper.visible {
-  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0.05s;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .stickyBox{
@@ -231,6 +232,7 @@ label {
   line-height: 1.6;
   margin-bottom: 20px;
 }
+
 
 /* Question box */
 .qbox {

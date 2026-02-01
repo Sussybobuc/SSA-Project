@@ -102,7 +102,6 @@ function showToast() {
     }
     return answered;
   }
-
 // ===== NHẠC NỀN TỰ ĐỘNG =====
 const music = document.getElementById("bgMusic");
 

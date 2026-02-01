@@ -114,12 +114,6 @@ form.addEventListener("submit", function(e) {
     return;
   }
 
-  // Show sticky wrapper with results
-  const stickyWrapper = document.querySelector('.sticky-wrapper');
-  if (stickyWrapper) {
-    stickyWrapper.classList.add('visible');
-  }
-
   resetScores();
 
   for (let i = 1; i <= 15; i++) {
@@ -162,13 +156,6 @@ resetBtn.addEventListener("click", function() {
   form.reset();
   stickyWrap.classList.add("hidden");
   resultBox.classList.add("hidden");
-  
-  // Hide sticky wrapper when reset
-  const stickyWrapper = document.querySelector('.sticky-wrapper');
-  if (stickyWrapper) {
-    stickyWrapper.classList.remove('visible');
-  }
-  
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
