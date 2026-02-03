@@ -93,15 +93,6 @@ function showToast() {
     });
   }
 
-  function getAnsweredCount() {
-    const total = 15;
-    let answered = 0;
-    for (let i = 1; i <= total; i++) {
-      const checked = form.querySelector(`input[name="q${i}"]:checked`);
-      if (checked) answered++;
-    }
-    return answered;
-  }
 // ===== NHẠC NỀN TỰ ĐỘNG =====
 const music = document.getElementById("bgMusic");
 
