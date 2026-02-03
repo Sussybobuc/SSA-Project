@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Bạn đang phân vân?</title>
+    <link rel="icon" type="image/x-icon" href="Website Materials/favicon.ico">
   <link rel="stylesheet" href="style.css">
+  <style>
+
+  </style>
 </head>
-<body>
+<body class="question-page">
 
-<h1>Bạn đang phân vân về điều gì?</h1>
+<div class="question-container">
+  <h1>Bạn đang phân vân về điều gì?</h1>
+  <p class="question-subtitle">36 Thanh Hóa</p>
 
-<!-- Nút chọn chuyển hướng -->
-<div class="grid">
-  <button onclick="startQuiz()">
-    Chọn chuyên ngành hẹp phù hợp
-  </button>
+  <!-- Nút chọn chuyển hướng -->
+  <div class="options-grid">
+    <div class="option-card">
+      <button onclick="startQuiz()">
+        <div class="option-text">
+          <div class="option-title">Chọn chuyên ngành hẹp phù hợp</div>
+          <div class="option-desc">Tìm chuyên ngành hẹp</div>
+        </div>
+      </button>
+    </div>
 
-  <button onclick="location.href='Chat section/career.html'">
-    Cơ hội nghề nghiệp
-  </button>
+    <div class="option-card">
+      <button onclick="location.href='Chat section/career.html'">
+        <div class="option-text">
+          <div class="option-title">Cơ hội nghề nghiệp</div>
+          <div class="option-desc">Tìm hiểu về các cơ hội nghề nghiệp trong tương lai</div>
+        </div>
+      </button>
+    </div>
+  </div>
 </div>
 
 <button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
