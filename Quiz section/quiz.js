@@ -12,11 +12,11 @@ function addPoints(value) {
 }
 
 function getAnsweredCount() {
-  const total = 15;
+  const total = 20;
   let answered = 0;
   for (let i = 1; i <= total; i++) {
-    const checked = form.querySelector(`input[name="q${i}"]:checked`);
-    if (checked) answered++;
+    const checked = form.querySelectorAll(`input[name="q${i}"]:checked`);
+    if (checked.length > 0) answered++;
   }
   return answered;
 }
@@ -57,36 +57,23 @@ const stickyWrap = document.querySelector(".sticky-wrapper");
 
 // Different majors for different quiz types
 const majorsByCNTT = {
-  se: { name: "Kỹ thuật phần mềm (Software Engineering)", score: 0, desc: "Hợp với bạn nếu bạn thích code sản phẩm, làm web/app, teamwork và xây tính năng." },
-  ai: { name: "Khoa học dữ liệu / AI (Data Science & AI)", score: 0, desc: "Hợp với bạn nếu bạn thích dữ liệu, mô hình, phân tích, ML và học sâu kiến thức." },
-  sec:{ name: "An ninh mạng (Cyber Security)", score: 0, desc: "Hợp với bạn nếu bạn thích bảo mật, kiểm tra lỗ hổng, hệ thống và tư duy phòng thủ." },
-  net:{ name: "Mạng máy tính / Cloud (Network & Cloud)", score: 0, desc: "Bạn phù hợp với bạn nếu bạn thích server, hạ tầng, mạng, Linux và vận hành hệ thống." },
-  it: { name: "Hệ thống thông tin (Information Systems)", score: 0, desc: "Hợp với bạn nếu bạn thích phân tích yêu cầu, quy trình, quản lý dữ liệu và kết nối giữa kỹ thuật - người dùng." },
+  placeholder1: { name: ":3 1", score: 0, desc: "Con quỷ có thể khóc" },
+  placeholder2: { name: ":3 2", score: 0, desc: "Tâm trí = Bị kiểm soát" },
+  placeholder3:{ name: ":3 3", score: 0, desc: "Vì cái vibes" },
+  placeholder4:{ name: ":3 4", score: 0, desc: "Tra vít code" },
+  placeholder5: { name: ":3 5", score: 0, desc: "Hitler bé nhỏ" },
 };
 
 const majorsBySE = {
-  frontend: { name: "Frontend Developer", score: 0, desc: "Bạn phù hợp với việc phát triển giao diện người dùng, làm việc với HTML/CSS/JavaScript, và tạo trải nghiệm người dùng tuyệt vời." },
-  backend: { name: "Backend Developer", score: 0, desc: "Bạn phù hợp với việc xây dựng logic server, database, API và xử lý dữ liệu phía sau ứng dụng." },
-  fullstack: { name: "Full-stack Developer", score: 0, desc: "Bạn phù hợp với cả frontend và backend, có thể xây dựng ứng dụng hoàn chỉnh từ đầu đến cuối." },
-  mobile: { name: "Mobile Developer", score: 0, desc: "Bạn phù hợp với phát triển ứng dụng di động trên iOS/Android hoặc cross-platform." },
-  web: { name: "Web Developer", score: 0, desc: "Bạn phù hợp với phát triển website và web applications, làm việc với các công nghệ web hiện đại." },
-  devops: { name: "DevOps Engineer", score: 0, desc: "Bạn phù hợp với tự động hóa, CI/CD, container và quản lý infrastructure." },
-};
-
-const majorsByAI = {
-  cv: { name: "Computer Vision Engineer", score: 0, desc: "Bạn phù hợp với xử lý hình ảnh, video, nhận diện đối tượng và các ứng dụng AI về thị giác máy tính." },
-  nlp: { name: "NLP Engineer", score: 0, desc: "Bạn phù hợp với xử lý ngôn ngữ tự nhiên, chatbot, dịch máy và phân tích văn bản." },
-  ml: { name: "Machine Learning Engineer", score: 0, desc: "Bạn phù hợp với xây dựng và deploy các mô hình ML, làm việc với dữ liệu và thuật toán học máy." },
-  dl: { name: "Deep Learning Specialist", score: 0, desc: "Bạn phù hợp với nghiên cứu và phát triển các mô hình deep learning phức tạp, neural networks." },
-  mle: { name: "ML Engineer (General)", score: 0, desc: "Bạn phù hợp với vai trò tổng quát trong machine learning, từ data preprocessing đến model deployment." },
-};
-
-const majorsBySEC = {
-  offensive: { name: "Offensive Security / Penetration Tester", score: 0, desc: "Bạn phù hợp với việc tìm kiếm lỗ hổng, pentesting, ethical hacking và red team operations." },
-  defensive: { name: "Defensive Security / Security Analyst", score: 0, desc: "Bạn phù hợp với việc bảo vệ hệ thống, phát hiện xâm nhập, monitoring và blue team operations." },
-  forensics: { name: "Digital Forensics Analyst", score: 0, desc: "Bạn phù hợp với phân tích forensics, incident response và điều tra các vụ tấn công." },
-  web: { name: "Web Security Specialist", score: 0, desc: "Bạn phù hợp với bảo mật web application, tìm lỗi OWASP Top 10 và secure coding." },
-  pentester: { name: "Penetration Tester", score: 0, desc: "Bạn phù hợp với kiểm tra bảo mật hệ thống, mạng và ứng dụng thông qua các cuộc tấn công có kiểm soát." },
+  JBE: { name: "Japanese Bridge Engineer", score: 0, desc: "Bạn phù hợp với vai trò cầu nối IT giữa Việt Nam và Nhật Bản, kết hợp kỹ năng kỹ thuật với khả năng giao tiếp tiếng Nhật chuyên nghiệp." },
+  AI: { name: "AI / Machine Learning", score: 0, desc: "Bạn phù hợp với nghiên cứu và phát triển các mô hình trí tuệ nhân tạo, học máy, xử lý dữ liệu và giải quyết bài toán phức tạp." },
+  ReactNode: { name: "React/NodeJS Developer", score: 0, desc: "Bạn phù hợp với phát triển web hiện đại, xây dựng giao diện người dùng với React và backend với NodeJS." },
+  IC: { name: "IC Design (Vi mạch bán dẫn)", score: 0, desc: "Bạn phù hợp với thiết kế vi mạch, làm việc với phần cứng, mạch điện tử và hệ thống nhúng." },
+  Java: { name: "Intensive Java Developer", score: 0, desc: "Bạn phù hợp với phát triển hệ thống doanh nghiệp lớn bằng Java, Spring framework và kiến trúc microservices." },
+  DevSecOps: { name: "DevSecOps for Cloud", score: 0, desc: "Bạn phù hợp với vận hành hệ thống cloud, tự động hóa deployment, và đảm bảo bảo mật cho hạ tầng." },
+  GameDev: { name: "Game Development", score: 0, desc: "Bạn phù hợp với phát triển game, thiết kế gameplay, đồ họa và tạo trải nghiệm giải trí cho người chơi." },
+  DataSci: { name: "Applied Data Science", score: 0, desc: "Bạn phù hợp với phân tích dữ liệu, xử lý dữ liệu lớn, trực quan hóa và biến dữ liệu thành insight có giá trị." },
+  DotNet: { name: ".NET Programming", score: 0, desc: "Bạn phù hợp với phát triển ứng dụng đa nền tảng bằng .NET framework, C# và các công nghệ Microsoft." },
 };
 
 // Select correct majors based on subject
@@ -109,16 +96,16 @@ form.addEventListener("submit", function(e) {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: "smooth" });
   const answered = getAnsweredCount();
-  if (answered < 15) {
-    alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 15 câu nhé!");
+  if (answered < 20) {
+    alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 20 câu nhé!");
     return;
   }
 
   resetScores();
 
-  for (let i = 1; i <= 15; i++) {
-    const checked = form.querySelector(`input[name="q${i}"]:checked`);
-    addPoints(checked.value);
+  for (let i = 1; i <= 20; i++) {
+    const checkedBoxes = form.querySelectorAll(`input[name="q${i}"]:checked`);
+    checkedBoxes.forEach(box => addPoints(box.value));
   }
 
   const sorted = Object.keys(majors)
@@ -157,6 +144,24 @@ resetBtn.addEventListener("click", function() {
   stickyWrap.classList.add("hidden");
   resultBox.classList.add("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Giới hạn số đáp án được chọn cho mỗi câu hỏi
+form.addEventListener("change", function(e) {
+  if (e.target.type === "checkbox") {
+    const questionName = e.target.name;
+    
+    // Find the parent qbox element to read max-selections setting
+    const qboxElement = e.target.closest('.qbox');
+    const maxSelections = qboxElement ? parseInt(qboxElement.dataset.maxSelections || "1") : 1;
+    
+    const checkedBoxes = form.querySelectorAll(`input[name="${questionName}"]:checked`);
+    
+    if (checkedBoxes.length > maxSelections) {
+      e.target.checked = false;
+      alert(`Bạn chỉ được chọn tối đa ${maxSelections} đáp án cho câu hỏi này!`);
+    }
+  }
 });
 
 // ===== NHẠC NỀN TỰ ĐỘNG =====

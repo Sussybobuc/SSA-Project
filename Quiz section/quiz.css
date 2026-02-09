@@ -275,10 +275,20 @@ label {
 .qbox input[type="radio"] {
   margin-right: 10px;
   cursor: pointer;
+  accent-color: #f97316;
+}
+
+.qbox input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #f97316;
 }
 
 .qbox input[type="radio"]:checked + label,
-.qbox label:has(input[type="radio"]:checked) {
+.qbox label:has(input[type="radio"]:checked),
+
+.qbox input[type="checkbox"]:checked + label,
+.qbox label:has(input[type="checkbox"]:checked) {
   background: #fff7ed;
   border-color: #f97316;
   font-weight: 500;

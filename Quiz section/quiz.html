@@ -23,497 +23,318 @@
         <form id="quizForm">
 
           <!-- ==================== QUIZ CNTT (General IT) ==================== -->
-          <div class="quiz-set" data-subject="CNTT">
-            <!-- câu hỏi 1 -->
-            <div class="qbox">
-              <h3>1) Bạn thích kiểu học nào hơn?</h3>
-              <label><input type="radio" name="q1" value="se,ai"> Thực hành + làm project</label>
-              <label><input type="radio" name="q1" value="ai,sec"> Lý thuyết + nghiên cứu</label>
-              <label><input type="radio" name="q1" value="it,net"> Kết hợp cả hai</label>
+          <div class="quiz-set" data-subject="CNTT" style="display:none;">
+            <div class="qbox" data-max-selections="3">
+              <h3>Công Nghệ Thông Tin</h3>
+              <p style="color: #64748b; margin: 20px 0;">
+                Cơn bão đang đến
+              </p>
             </div>
-
-          <!-- câu hỏi 2 -->
-          <div class="qbox">
-            <h3>2) Bạn thích giải quyết vấn đề kiểu nào?</h3>
-            <label><input type="radio" name="q2" value="se"> Xây hệ thống/app từ đầu đến cuối</label>
-            <label><input type="radio" name="q2" value="ai"> Phân tích dữ liệu để ra quyết định</label>
-            <label><input type="radio" name="q2" value="sec"> Tìm lỗi và lỗ hổng để vá</label>
-          </div>
-
-          <!-- câu hỏi 3 -->
-          <div class="qbox">
-            <h3>3) Bạn thích công việc nào hơn?</h3>
-            <label><input type="radio" name="q3" value="se"> Lập trình web/app</label>
-            <label><input type="radio" name="q3" value="ai"> Machine Learning / AI</label>
-            <label><input type="radio" name="q3" value="net"> Mạng / hệ thống / server</label>
-          </div>
-
-          <!-- câu hỏi 4 -->
-          <div class="qbox">
-            <h3>4) Bạn có thích làm việc với dữ liệu, số liệu không?</h3>
-            <label><input type="radio" name="q4" value="ai"> Rất thích</label>
-            <label><input type="radio" name="q4" value="it"> Bình thường</label>
-            <label><input type="radio" name="q4" value="se"> Không thích lắm</label>
-          </div>
-
-          <!-- câu hỏi 5 -->
-          <div class="qbox">
-            <h3>5) Bạn thấy hứng thú với cái nào nhất?</h3>
-            <label><input type="radio" name="q5" value="sec"> Bảo mật, tấn công & phòng thủ</label>
-            <label><input type="radio" name="q5" value="net"> Router, Network, Cloud</label>
-            <label><input type="radio" name="q5" value="se"> Code, UI, app features</label>
-          </div>
-
-          <!-- câu hỏi 6 -->
-          <div class="qbox">
-            <h3>6) Bạn muốn công việc tương lai thiên về gì?</h3>
-            <label><input type="radio" name="q6" value="se"> Sản phẩm (product) / phần mềm</label>
-            <label><input type="radio" name="q6" value="ai"> Dữ liệu / AI / phân tích</label>
-            <label><input type="radio" name="q6" value="net,sec"> Hạ tầng / bảo mật</label>
-          </div>
-
-          <!-- câu hỏi 7 -->
-          <div class="qbox">
-            <h3>7) Bạn thích kiểu tư duy nào hơn?</h3>
-            <label><input type="radio" name="q7" value="se"> Logic + xây dựng từng bước</label>
-            <label><input type="radio" name="q7" value="ai"> Suy luận + mô hình + thử nghiệm</label>
-            <label><input type="radio" name="q7" value="sec"> Cẩn thận + nghi ngờ + kiểm tra</label>
-          </div>
-
-          <!-- câu hỏi 8 -->
-          <div class="qbox">
-            <h3>8) Bạn có thích Linux / Terminal không?</h3>
-            <label><input type="radio" name="q8" value="sec,net"> Rất thích</label>
-            <label><input type="radio" name="q8" value="it"> Cũng ổn</label>
-            <label><input type="radio" name="q8" value="se"> Không quen / không thích</label>
-          </div>
-
-          <!-- câu hỏi 9 -->
-          <div class="qbox">
-            <h3>9) Bạn thích làm dự án nào hơn?</h3>
-            <label><input type="radio" name="q9" value="se"> Website/app có người dùng thật</label>
-            <label><input type="radio" name="q9" value="ai"> Dự đoán/nhận diện (AI)</label>
-            <label><input type="radio" name="q9" value="net"> Setup server / hệ thống</label>
-          </div>
-
-          <!-- câu hỏi 10 -->
-          <div class="qbox">
-            <h3>10) Bạn thích học kiểu nào hơn?</h3>
-            <label><input type="radio" name="q10" value="se"> Học nhanh để làm ra sản phẩm</label>
-            <label><input type="radio" name="q10" value="ai"> Học sâu toán + thuật toán</label>
-            <label><input type="radio" name="q10" value="net,sec"> Học hệ thống + thực chiến</label>
-          </div>
-
-          <!-- câu hỏi 11 -->
-          <div class="qbox">
-            <h3>11) Nếu gặp lỗi, bạn thường…</h3>
-            <label><input type="radio" name="q11" value="se"> Debug code tới khi chạy</label>
-            <label><input type="radio" name="q11" value="net"> Check cấu hình, logs, hệ thống</label>
-            <label><input type="radio" name="q11" value="sec"> Tìm nguyên nhân & “điểm yếu”</label>
-          </div>
-
-          <!-- câu hỏi 12 -->
-          <div class="qbox">
-            <h3>12) Bạn có thích làm việc theo quy trình (kế hoạch/đúng chuẩn) không?</h3>
-            <label><input type="radio" name="q12" value="it"> Rất thích</label>
-            <label><input type="radio" name="q12" value="se"> Bình thường</label>
-            <label><input type="radio" name="q12" value="ai,sec"> Không thích lắm</label>
-          </div>
-
-          <!-- câu hỏi 13 -->
-          <div class="qbox">
-            <h3>13) Bạn quan tâm nhất đến điều gì?</h3>
-            <label><input type="radio" name="q13" value="se"> Xây sản phẩm chạy ổn định</label>
-            <label><input type="radio" name="q13" value="ai"> Kết quả/độ chính xác của mô hình</label>
-            <label><input type="radio" name="q13" value="sec"> An toàn dữ liệu & bảo mật</label>
-          </div>
-
-          <!-- câu hỏi 14 -->
-          <div class="qbox">
-            <h3>14) Bạn thích làm việc với người khác theo vai trò nào?</h3>
-            <label><input type="radio" name="q14" value="se"> Dev trong team làm sản phẩm</label>
-            <label><input type="radio" name="q14" value="it"> Cầu nối giữa kỹ thuật và nhu cầu</label>
-            <label><input type="radio" name="q14" value="net,sec"> Hỗ trợ hệ thống/bảo mật</label>
-          </div>
-
-          <!-- câu hỏi 15 -->
-          <div class="qbox">
-            <h3>15) Bạn mong muốn công việc tương lai có tính chất nào?</h3>
-            <label><input type="radio" name="q15" value="se"> Sáng tạo, làm tính năng mới</label>
-            <label><input type="radio" name="q15" value="ai"> Nghiên cứu, thử nghiệm, cải tiến</label>
-            <label><input type="radio" name="q15" value="net,sec"> Ổn định, hệ thống, bảo vệ</label>
-          </div>
           </div>
           <!-- END QUIZ CNTT -->
 
           <!-- ==================== QUIZ Kỹ thuật phần mềm (SE) ==================== -->
           <div class="quiz-set" data-subject="SE" style="display:none;">
             <!-- câu hỏi 1 -->
-            <div class="qbox">
-              <h3>1) Bạn thích làm việc trong môi trường nào?</h3>
-              <label><input type="radio" name="q1" value="web"> Làm web application (Frontend/Backend)</label>
-              <label><input type="radio" name="q1" value="mobile"> Làm mobile app (iOS/Android)</label>
-              <label><input type="radio" name="q1" value="system"> Làm hệ thống lớn/enterprise software</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>1) Thế mạnh nổi bật nhất của bạn hiện tại là gì? <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q1" value="JBE"> A. Ngoại ngữ, đặc biệt là tiếng Nhật, sẵn sàng học chứng chỉ N3 trở lên</label>
+              <label><input type="checkbox" name="q1" value="AI"> B. Tư duy toán học, thuật toán, thích làm việc với mô hình</label>
+              <label><input type="checkbox" name="q1" value="ReactNode"> C. Tư duy thiết kế, thích xây dựng giao diện và sản phẩm web</label>
+              <label><input type="checkbox" name="q1" value="IC"> D. Hiểu tốt phần cứng, điện tử, logic mạch</label>
+              <label><input type="checkbox" name="q1" value="Java"> E. Khả năng lập trình Java tốt, chịu được code phức tạp</label>
+              <label><input type="checkbox" name="q1" value="DevSecOps"> F. Hiểu hệ thống, bảo mật, hạ tầng cloud</label>
+              <label><input type="checkbox" name="q1" value="GameDev"> G. Sáng tạo, yêu thích game, gameplay</label>
+              <label><input type="checkbox" name="q1" value="DataSci"> H. Phân tích số liệu, làm việc với dữ liệu lớn</label>
+              <label><input type="checkbox" name="q1" value="DotNet"> I. Lập trình hướng đối tượng tốt, thích C#/.NET</label>
             </div>
 
             <!-- câu hỏi 2 -->
-            <div class="qbox">
-              <h3>2) Bạn thích phát triển phần nào của ứng dụng?</h3>
-              <label><input type="radio" name="q2" value="frontend"> Frontend - Giao diện người dùng</label>
-              <label><input type="radio" name="q2" value="backend"> Backend - Logic và dữ liệu</label>
-              <label><input type="radio" name="q2" value="fullstack"> Fullstack - Cả hai</label>
+            <div class="qbox" data-max-selections="1">
+              <h3>2) Bạn sẵn sàng đầu tư nhiều thời gian nhất để học kỹ năng nào? <small>(Chọn tối đa 1 đáp án)</small></h3>
+              <label><input type="radio" name="q2" value="JBE"> A. Tiếng Nhật chuyên ngành CNTT</label>
+              <label><input type="radio" name="q2" value="AI"> B. Toán, xác suất, machine learning</label>
+              <label><input type="radio" name="q2" value="ReactNode"> C. JavaScript, React, NodeJS</label>
+              <label><input type="radio" name="q2" value="IC"> D. Điện tử, vi điều khiển, thiết kế mạch</label>
+              <label><input type="radio" name="q2" value="Java"> E. Java, Spring, Microservices</label>
+              <label><input type="radio" name="q2" value="DevSecOps"> F. Cloud, DevOps, Security</label>
+              <label><input type="radio" name="q2" value="GameDev"> G. Game engine, đồ họa, AI trong game</label>
+              <label><input type="radio" name="q2" value="DataSci"> H. Python, xử lý dữ liệu, trực quan hóa</label>
+              <label><input type="radio" name="q2" value="DotNet"> I. .NET framework, cross-platform</label>
             </div>
 
             <!-- câu hỏi 3 -->
-            <div class="qbox">
-              <h3>3) Framework/Technology bạn muốn học?</h3>
-              <label><input type="radio" name="q3" value="web"> React, Angular, Vue.js</label>
-              <label><input type="radio" name="q3" value="mobile"> Flutter, React Native, Swift</label>
-              <label><input type="radio" name="q3" value="backend"> Node.js, Django, Spring Boot</label>
+            <div class="qbox" data-max-selections="2">
+              <h3>3) Bạn cảm thấy tự tin nhất khi làm việc với? <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q3" value="JBE"> A. Khách hàng hoặc kỹ sư nước ngoài</label>
+              <label><input type="checkbox" name="q3" value="AI"> B. Thuật toán và mô hình học máy</label>
+              <label><input type="checkbox" name="q3" value="ReactNode"> C. Người dùng và trải nghiệm UI/UX</label>
+              <label><input type="checkbox" name="q3" value="IC"> D. Phần cứng và mạch điện</label>
+              <label><input type="checkbox" name="q3" value="Java"> E. Hệ thống backend lớn</label>
+              <label><input type="checkbox" name="q3" value="DevSecOps"> F. Hạ tầng hệ thống và bảo mật</label>
+              <label><input type="checkbox" name="q3" value="GameDev"> G. Người chơi và trải nghiệm game</label>
+              <label><input type="checkbox" name="q3" value="DataSci"> H. Dữ liệu và biểu đồ</label>
+              <label><input type="checkbox" name="q3" value="DotNet"> I. Ứng dụng desktop/mobile</label>
             </div>
 
             <!-- câu hỏi 4 -->
-            <div class="qbox">
-              <h3>4) Bạn thích quy trình phát triển phần mềm nào?</h3>
-              <label><input type="radio" name="q4" value="agile"> Agile/Scrum - Linh hoạt, sprint ngắn</label>
-              <label><input type="radio" name="q4" value="waterfall"> Waterfall - Tuần tự, có kế hoạch rõ ràng</label>
-              <label><input type="radio" name="q4" value="devops"> DevOps - Tích hợp liên tục, tự động hóa</label>
+            <div class="qbox" data-max-selections="1">
+              <h3>4) Bạn mong muốn sản phẩm mình làm ra là: <small>(Chọn tối đa 1 đáp án)</small></h3>
+              <label><input type="radio" name="q4" value="JBE"> A. Hệ thống IT phục vụ khách nước ngoài</label>
+              <label><input type="radio" name="q4" value="AI"> B. Mô hình AI thông minh</label>
+              <label><input type="radio" name="q4" value="ReactNode"> C. Website/app hiện đại</label>
+              <label><input type="radio" name="q4" value="IC"> D. Chip, bo mạch, hệ nhúng</label>
+              <label><input type="radio" name="q4" value="Java"> E. Hệ thống doanh nghiệp Java</label>
+              <label><input type="radio" name="q4" value="DevSecOps"> F. Hệ thống cloud an toàn</label>
+              <label><input type="radio" name="q4" value="GameDev"> G. Game hoàn chỉnh</label>
+              <label><input type="radio" name="q4" value="DataSci"> H. Dashboard dữ liệu</label>
+              <label><input type="radio" name="q4" value="DotNet"> I. Ứng dụng .NET đa nền tảng</label>
             </div>
 
             <!-- câu hỏi 5 -->
-            <div class="qbox">
-              <h3>5) Bạn quan tâm đến khía cạnh nào của code?</h3>
-              <label><input type="radio" name="q5" value="design"> Design Pattern & Architecture</label>
-              <label><input type="radio" name="q5" value="performance"> Performance & Optimization</label>
-              <label><input type="radio" name="q5" value="testing"> Testing & Quality Assurance</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>5) Bạn thích học theo cách nào hơn? <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q5" value="JBE"> A. Học song song kỹ thuật và ngoại ngữ</label>
+              <label><input type="checkbox" name="q5" value="AI"> B. Nghiên cứu, thử nghiệm mô hình</label>
+              <label><input type="checkbox" name="q5" value="ReactNode"> C. Làm project web thực tế</label>
+              <label><input type="checkbox" name="q5" value="IC"> D. Thí nghiệm phần cứng</label>
+              <label><input type="checkbox" name="q5" value="Java"> E. Làm dự án lớn, dài hạn</label>
+              <label><input type="checkbox" name="q5" value="DevSecOps"> F. Triển khai hệ thống thật</label>
+              <label><input type="checkbox" name="q5" value="GameDev"> G. Làm demo game</label>
+              <label><input type="checkbox" name="q5" value="DataSci"> H. Phân tích dataset</label>
+              <label><input type="checkbox" name="q5" value="DotNet"> I. Code theo framework</label>
             </div>
 
             <!-- câu hỏi 6 -->
-            <div class="qbox">
-              <h3>6) Bạn thích làm dự án kiểu nào?</h3>
-              <label><input type="radio" name="q6" value="web"> Website/Web app thương mại</label>
-              <label><input type="radio" name="q6" value="mobile"> App di động cho người dùng cuối</label>
-              <label><input type="radio" name="q6" value="system"> Hệ thống quản lý/ERP lớn</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>6) Bạn sẵn sàng chấp nhận yêu cầu nào? <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q6" value="JBE"> A. Phải đạt tiếng Nhật N3–N2</label>
+              <label><input type="checkbox" name="q6" value="AI"> B. Toán và xác suất khó</label>
+              <label><input type="checkbox" name="q6" value="ReactNode"> C. Công nghệ thay đổi nhanh</label>
+              <label><input type="checkbox" name="q6" value="IC"> D. Học sâu phần cứng</label>
+              <label><input type="checkbox" name="q6" value="Java"> E. Code Java phức tạp</label>
+              <label><input type="checkbox" name="q6" value="DevSecOps"> F. Trách nhiệm về bảo mật hệ thống</label>
+              <label><input type="checkbox" name="q6" value="GameDev"> G. Áp lực sáng tạo</label>
+              <label><input type="checkbox" name="q6" value="DataSci"> H. Làm việc với dữ liệu bẩn</label>
+              <label><input type="checkbox" name="q6" value="DotNet"> I. Debug đa nền tảng</label>
             </div>
 
             <!-- câu hỏi 7 -->
-            <div class="qbox">
-              <h3>7) Bạn thích công nghệ UI nào?</h3>
-              <label><input type="radio" name="q7" value="web"> HTML/CSS/JavaScript</label>
-              <label><input type="radio" name="q7" value="mobile"> Native UI (SwiftUI, Jetpack Compose)</label>
-              <label><input type="radio" name="q7" value="desktop"> Desktop UI (Electron, WPF)</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>7) Khi gặp lỗi, bạn thích xử lý kiểu: <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q7" value="JBE"> A. Trao đổi với khách hàng</label>
+              <label><input type="checkbox" name="q7" value="AI"> B. Tinh chỉnh mô hình</label>
+              <label><input type="checkbox" name="q7" value="ReactNode"> C. Sửa UI/logic web</label>
+              <label><input type="checkbox" name="q7" value="IC"> D. Kiểm tra mạch</label>
+              <label><input type="checkbox" name="q7" value="Java"> E. Debug backend</label>
+              <label><input type="checkbox" name="q7" value="DevSecOps"> F. Kiểm tra log hệ thống</label>
+              <label><input type="checkbox" name="q7" value="GameDev"> G. Fix bug gameplay</label>
+              <label><input type="checkbox" name="q7" value="DataSci"> H. Làm sạch dữ liệu</label>
+              <label><input type="checkbox" name="q7" value="DotNet"> I. Debug code C#</label>
             </div>
 
             <!-- câu hỏi 8 -->
-            <div class="qbox">
-              <h3>8) Bạn thích làm việc với database nào?</h3>
-              <label><input type="radio" name="q8" value="sql"> SQL (MySQL, PostgreSQL)</label>
-              <label><input type="radio" name="q8" value="nosql"> NoSQL (MongoDB, Firebase)</label>
-              <label><input type="radio" name="q8" value="both"> Cả hai đều được</label>
+            <div class="qbox" data-max-selections="2">
+              <h3>8) Bạn thích làm việc với quy mô nào? <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q8" value="JBE"> A. Dự án offshore</label>
+              <label><input type="checkbox" name="q8" value="AI"> B. Nghiên cứu</label>
+              <label><input type="checkbox" name="q8" value="ReactNode"> C. Startup</label>
+              <label><input type="checkbox" name="q8" value="IC"> D. Phòng lab</label>
+              <label><input type="checkbox" name="q8" value="Java"> E. Doanh nghiệp lớn</label>
+              <label><input type="checkbox" name="q8" value="DevSecOps"> F. Cloud platform</label>
+              <label><input type="checkbox" name="q8" value="GameDev"> G. Studio game</label>
+              <label><input type="checkbox" name="q8" value="DataSci"> H. Công ty dữ liệu</label>
+              <label><input type="checkbox" name="q8" value="DotNet"> I. Công ty phần mềm</label>
             </div>
 
             <!-- câu hỏi 9 -->
-            <div class="qbox">
-              <h3>9) Vai trò trong team bạn thích?</h3>
-              <label><input type="radio" name="q9" value="frontend"> Frontend Developer</label>
-              <label><input type="radio" name="q9" value="backend"> Backend Developer</label>
-              <label><input type="radio" name="q9" value="fullstack"> Full-stack Developer</label>
+            <div class="qbox" data-max-selections="2">
+              <h3>9) Bạn mong muốn công việc sau này đòi hỏi bạn giỏi nhất ở yếu tố nào? <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q9" value="JBE"> A. Giao tiếp chuyên nghiệp với đối tác nước ngoài (đặc biệt là Nhật Bản)</label>
+              <label><input type="checkbox" name="q9" value="AI"> B. Tư duy logic và khả năng giải quyết bài toán phức tạp</label>
+              <label><input type="checkbox" name="q9" value="ReactNode"> C. Khả năng xây dựng sản phẩm nhanh, đẹp, dễ dùng</label>
+              <label><input type="checkbox" name="q9" value="IC"> D. Hiểu sâu cách phần cứng hoạt động</label>
+              <label><input type="checkbox" name="q9" value="Java"> E. Thiết kế và duy trì hệ thống phần mềm lớn</label>
+              <label><input type="checkbox" name="q9" value="DevSecOps"> F. Đảm bảo hệ thống luôn an toàn và ổn định</label>
+              <label><input type="checkbox" name="q9" value="GameDev"> G. Sáng tạo trải nghiệm giải trí cho người dùng</label>
+              <label><input type="checkbox" name="q9" value="DataSci"> H. Biến dữ liệu thành thông tin có giá trị</label>
+              <label><input type="checkbox" name="q9" value="DotNet"> I. Xây dựng ứng dụng đa nền tảng hiệu quả</label>
             </div>
 
             <!-- câu hỏi 10 -->
-            <div class="qbox">
-              <h3>10) Bạn quan tâm đến khía cạnh nào của UX?</h3>
-              <label><input type="radio" name="q10" value="design"> Visual Design & Animation</label>
-              <label><input type="radio" name="q10" value="usability"> Usability & User Flow</label>
-              <label><input type="radio" name="q10" value="accessibility"> Accessibility & Performance</label>
+            <div class="qbox" data-max-selections="1">
+              <h3>10) Nếu phải chọn một yêu cầu "bắt buộc" của ngành, bạn chấp nhận điều nào nhất? <small>(Chọn tối đa 1 đáp án)</small></h3>
+              <label><input type="radio" name="q10" value="JBE"> A. Đạt trình độ tiếng Nhật tối thiểu N3</label>
+              <label><input type="radio" name="q10" value="AI"> B. Học nhiều toán và thống kê</label>
+              <label><input type="radio" name="q10" value="ReactNode"> C. Theo kịp công nghệ web thay đổi nhanh</label>
+              <label><input type="radio" name="q10" value="IC"> D. Nắm chắc kiến thức điện – điện tử</label>
+              <label><input type="radio" name="q10" value="Java"> E. Code Java cường độ cao</label>
+              <label><input type="radio" name="q10" value="DevSecOps"> F. Hiểu sâu bảo mật và hạ tầng</label>
+              <label><input type="radio" name="q10" value="GameDev"> G. Thường xuyên sáng tạo ý tưởng mới</label>
+              <label><input type="radio" name="q10" value="DataSci"> H. Làm việc với dữ liệu lớn và phức tạp</label>
+              <label><input type="radio" name="q10" value="DotNet"> I. Thành thạo framework .NET</label>
             </div>
 
             <!-- câu hỏi 11 -->
-            <div class="qbox">
-              <h3>11) Bạn thích deployment platform nào?</h3>
-              <label><input type="radio" name="q11" value="cloud"> Cloud (AWS, Azure, GCP)</label>
-              <label><input type="radio" name="q11" value="paas"> PaaS (Heroku, Vercel, Netlify)</label>
-              <label><input type="radio" name="q11" value="container"> Container (Docker, Kubernetes)</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>11) Bạn thích vai trò nào trong một dự án? <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q11" value="JBE"> A. Cầu nối giữa khách hàng và đội kỹ thuật</label>
+              <label><input type="checkbox" name="q11" value="AI"> B. Người xây dựng thuật toán thông minh</label>
+              <label><input type="checkbox" name="q11" value="ReactNode"> C. Người làm giao diện và logic web</label>
+              <label><input type="checkbox" name="q11" value="IC"> D. Người phụ trách phần cứng</label>
+              <label><input type="checkbox" name="q11" value="Java"> E. Người thiết kế backend chính</label>
+              <label><input type="checkbox" name="q11" value="DevSecOps"> F. Người quản lý hệ thống và bảo mật</label>
+              <label><input type="checkbox" name="q11" value="GameDev"> G. Người thiết kế gameplay</label>
+              <label><input type="checkbox" name="q11" value="DataSci"> H. Người phân tích dữ liệu</label>
+              <label><input type="checkbox" name="q11" value="DotNet"> I. Người phát triển ứng dụng</label>
             </div>
 
             <!-- câu hỏi 12 -->
-            <div class="qbox">
-              <h3>12) Bạn thích API design style nào?</h3>
-              <label><input type="radio" name="q12" value="rest"> REST API</label>
-              <label><input type="radio" name="q12" value="graphql"> GraphQL</label>
-              <label><input type="radio" name="q12" value="grpc"> gRPC/WebSocket</label>
+            <div class="qbox" data-max-selections="2">
+              <h3>12) Bạn cảm thấy hứng thú hơn với loại vấn đề nào? <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q12" value="JBE"> A. Hiểu đúng yêu cầu từ khách hàng</label>
+              <label><input type="checkbox" name="q12" value="AI"> B. Tăng độ chính xác của mô hình</label>
+              <label><input type="checkbox" name="q12" value="ReactNode"> C. Cải thiện trải nghiệm người dùng</label>
+              <label><input type="checkbox" name="q12" value="IC"> D. Sửa lỗi phần cứng</label>
+              <label><input type="checkbox" name="q12" value="Java"> E. Tối ưu hiệu năng hệ thống</label>
+              <label><input type="checkbox" name="q12" value="DevSecOps"> F. Phát hiện lỗ hổng bảo mật</label>
+              <label><input type="checkbox" name="q12" value="GameDev"> G. Cân bằng gameplay</label>
+              <label><input type="checkbox" name="q12" value="DataSci"> H. Làm sạch và xử lý dữ liệu</label>
+              <label><input type="checkbox" name="q12" value="DotNet"> I. Debug ứng dụng</label>
             </div>
 
             <!-- câu hỏi 13 -->
-            <div class="qbox">
-              <h3>13) Bạn muốn làm việc với công nghệ nào?</h3>
-              <label><input type="radio" name="q13" value="web"> Progressive Web Apps (PWA)</label>
-              <label><input type="radio" name="q13" value="mobile"> Native Mobile Development</label>
-              <label><input type="radio" name="q13" value="crossplatform"> Cross-platform (Flutter, React Native)</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>13) Bạn muốn kỹ năng nào giúp mình "không bị thay thế"? <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q13" value="JBE"> A. Ngoại ngữ + hiểu kỹ thuật</label>
+              <label><input type="checkbox" name="q13" value="AI"> B. Tư duy AI và học máy</label>
+              <label><input type="checkbox" name="q13" value="ReactNode"> C. Kỹ năng fullstack web</label>
+              <label><input type="checkbox" name="q13" value="IC"> D. Kiến thức phần cứng</label>
+              <label><input type="checkbox" name="q13" value="Java"> E. Java & kiến trúc hệ thống</label>
+              <label><input type="checkbox" name="q13" value="DevSecOps"> F. DevSecOps & Cloud</label>
+              <label><input type="checkbox" name="q13" value="GameDev"> G. Sáng tạo game</label>
+              <label><input type="checkbox" name="q13" value="DataSci"> H. Phân tích dữ liệu</label>
+              <label><input type="checkbox" name="q13" value="DotNet"> I. Lập trình .NET</label>
             </div>
 
             <!-- câu hỏi 14 -->
-            <div class="qbox">
-              <h3>14) Bạn thích code review kiểu nào?</h3>
-              <label><input type="radio" name="q14" value="strict"> Strict - Chi tiết từng dòng</label>
-              <label><input type="radio" name="q14" value="balanced"> Balanced - Vừa phải</label>
-              <label><input type="radio" name="q14" value="fast"> Fast - Chỉ check logic chính</label>
+            <div class="qbox" data-max-selections="2">
+              <h3>14) Bạn thấy mình phù hợp hơn với kiểu công việc nào? <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q14" value="JBE"> A. Giao tiếp – điều phối</label>
+              <label><input type="checkbox" name="q14" value="AI"> B. Nghiên cứu – phân tích</label>
+              <label><input type="checkbox" name="q14" value="ReactNode"> C. Phát triển sản phẩm</label>
+              <label><input type="checkbox" name="q14" value="IC"> D. Thiết kế kỹ thuật</label>
+              <label><input type="checkbox" name="q14" value="Java"> E. Xây dựng hệ thống</label>
+              <label><input type="checkbox" name="q14" value="DevSecOps"> F. Vận hành – bảo mật</label>
+              <label><input type="checkbox" name="q14" value="GameDev"> G. Sáng tạo nội dung</label>
+              <label><input type="checkbox" name="q14" value="DataSci"> H. Phân tích dữ liệu</label>
+              <label><input type="checkbox" name="q14" value="DotNet"> I. Phát triển ứng dụng</label>
             </div>
 
             <!-- câu hỏi 15 -->
-            <div class="qbox">
-              <h3>15) Mục tiêu nghề nghiệp của bạn?</h3>
-              <label><input type="radio" name="q15" value="frontend"> Frontend Specialist</label>
-              <label><input type="radio" name="q15" value="backend"> Backend Specialist</label>
-              <label><input type="radio" name="q15" value="fullstack"> Full-stack Engineer</label>
+            <div class="qbox" data-max-selections="1">
+              <h3>15) Nếu phải học rất sâu một mảng, bạn chọn: <small>(Chọn tối đa 1 đáp án)</small></h3>
+              <label><input type="radio" name="q15" value="JBE"> A. Tiếng Nhật chuyên ngành</label>
+              <label><input type="radio" name="q15" value="AI"> B. Machine Learning</label>
+              <label><input type="radio" name="q15" value="ReactNode"> C. React/NodeJS</label>
+              <label><input type="radio" name="q15" value="IC"> D. Vi mạch & vi điều khiển</label>
+              <label><input type="radio" name="q15" value="Java"> E. Java & Spring</label>
+              <label><input type="radio" name="q15" value="DevSecOps"> F. Cloud & Security</label>
+              <label><input type="radio" name="q15" value="GameDev"> G. Game Engine</label>
+              <label><input type="radio" name="q15" value="DataSci"> H. Data Science</label>
+              <label><input type="radio" name="q15" value="DotNet"> I. .NET</label>
+            </div>
+
+            <!-- câu hỏi 16 -->
+            <div class="qbox" data-max-selections="2">
+              <h3>16) Bạn đánh giá thành công nghề nghiệp bằng: <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q16" value="JBE"> A. Trở thành cầu nối IT</label>
+              <label><input type="checkbox" name="q16" value="AI"> B. Mô hình AI hiệu quả</label>
+              <label><input type="checkbox" name="q16" value="ReactNode"> C. Sản phẩm web được nhiều người dùng</label>
+              <label><input type="checkbox" name="q16" value="IC"> D. Thiết kế được mạch/chip</label>
+              <label><input type="checkbox" name="q16" value="Java"> E. Hệ thống Java ổn định</label>
+              <label><input type="checkbox" name="q16" value="DevSecOps"> F. Hệ thống cloud an toàn</label>
+              <label><input type="checkbox" name="q16" value="GameDev"> G. Game được yêu thích</label>
+              <label><input type="checkbox" name="q16" value="DataSci"> H. Insight từ dữ liệu</label>
+              <label><input type="checkbox" name="q16" value="DotNet"> I. Ứng dụng chạy đa nền tảng</label>
+            </div>
+
+            <!-- câu hỏi 17 -->
+            <div class="qbox" data-max-selections="3">
+              <h3>17) Bạn thích học từ: <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q17" value="JBE"> A. Tài liệu song ngữ</label>
+              <label><input type="checkbox" name="q17" value="AI"> B. Dataset & mô hình</label>
+              <label><input type="checkbox" name="q17" value="ReactNode"> C. Dự án web</label>
+              <label><input type="checkbox" name="q17" value="IC"> D. Thí nghiệm mạch</label>
+              <label><input type="checkbox" name="q17" value="Java"> E. Case study doanh nghiệp</label>
+              <label><input type="checkbox" name="q17" value="DevSecOps"> F. Hệ thống cloud thực tế</label>
+              <label><input type="checkbox" name="q17" value="GameDev"> G. Demo game</label>
+              <label><input type="checkbox" name="q17" value="DataSci"> H. Dashboard dữ liệu</label>
+              <label><input type="checkbox" name="q17" value="DotNet"> I. Project .NET</label>
+            </div>
+
+            <!-- câu hỏi 18 -->
+            <div class="qbox" data-max-selections="2">
+              <h3>18) Nếu phải chọn một định hướng lâu dài, bạn nghiêng về: <small>(Chọn tối đa 2 đáp án)</small></h3>
+              <label><input type="checkbox" name="q18" value="JBE"> A. IT + tiếng Nhật</label>
+              <label><input type="checkbox" name="q18" value="AI"> B. Trí tuệ nhân tạo</label>
+              <label><input type="checkbox" name="q18" value="ReactNode"> C. Web & ứng dụng</label>
+              <label><input type="checkbox" name="q18" value="IC"> D. Phần cứng & vi mạch</label>
+              <label><input type="checkbox" name="q18" value="Java"> E. Java doanh nghiệp</label>
+              <label><input type="checkbox" name="q18" value="DevSecOps"> F. DevSecOps & Cloud</label>
+              <label><input type="checkbox" name="q18" value="GameDev"> G. Game</label>
+              <label><input type="checkbox" name="q18" value="DataSci"> H. Khoa học dữ liệu</label>
+              <label><input type="checkbox" name="q18" value="DotNet"> I. .NET</label>
+            </div>
+
+            <!-- câu hỏi 19 -->
+            <div class="qbox" data-max-selections="3">
+              <h3>19) Bạn thường được người khác đánh giá là người: <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q19" value="JBE"> A. Giao tiếp tốt, dễ làm việc chung</label>
+              <label><input type="checkbox" name="q19" value="AI"> B. Suy nghĩ sâu và logic</label>
+              <label><input type="checkbox" name="q19" value="ReactNode"> C. Nhạy cảm với cảm nhận của người khác</label>
+              <label><input type="checkbox" name="q19" value="IC"> D. Cẩn thận, tỉ mỉ</label>
+              <label><input type="checkbox" name="q19" value="Java"> E. Có trách nhiệm và kiên trì</label>
+              <label><input type="checkbox" name="q19" value="DevSecOps"> F. Thận trọng, đáng tin cậy</label>
+              <label><input type="checkbox" name="q19" value="GameDev"> G. Sáng tạo, nhiều ý tưởng</label>
+              <label><input type="checkbox" name="q19" value="DataSci"> H. Bình tĩnh, phân tích tốt</label>
+              <label><input type="checkbox" name="q19" value="DotNet"> I. Thực tế, làm việc có quy trình</label>
+            </div>
+
+            <!-- câu hỏi 20 -->
+            <div class="qbox" data-max-selections="3">
+              <h3>20) Công việc lý tưởng với bạn là công việc: <small>(Chọn tối đa 3 đáp án)</small></h3>
+              <label><input type="checkbox" name="q20" value="JBE"> A. Liên quan nhiều đến con người</label>
+              <label><input type="checkbox" name="q20" value="AI"> B. Mang tính trí tuệ cao</label>
+              <label><input type="checkbox" name="q20" value="ReactNode"> C. Gần với người sử dụng</label>
+              <label><input type="checkbox" name="q20" value="IC"> D. Đòi hỏi độ chính xác</label>
+              <label><input type="checkbox" name="q20" value="Java"> E. Có giá trị lâu dài</label>
+              <label><input type="checkbox" name="q20" value="DevSecOps"> F. Gắn với an toàn và trách nhiệm</label>
+              <label><input type="checkbox" name="q20" value="GameDev"> G. Cho phép sáng tạo</label>
+              <label><input type="checkbox" name="q20" value="DataSci"> H. Dựa trên phân tích</label>
+              <label><input type="checkbox" name="q20" value="DotNet"> I. Mang tính thực thi</label>
             </div>
           </div>
           <!-- END QUIZ SE -->
 
           <!-- ==================== QUIZ Trí tuệ nhân tạo (AI) ==================== -->
           <div class="quiz-set" data-subject="AI" style="display:none;">
-            <!-- câu hỏi 1 -->
-            <div class="qbox">
-              <h3>1) Bạn thích lĩnh vực AI nào nhất?</h3>
-              <label><input type="radio" name="q1" value="ml"> Machine Learning cơ bản</label>
-              <label><input type="radio" name="q1" value="dl"> Deep Learning & Neural Networks</label>
-              <label><input type="radio" name="q1" value="nlp"> Natural Language Processing</label>
-            </div>
-
-            <!-- câu hỏi 2 -->
-            <div class="qbox">
-              <h3>2) Bạn thích làm việc với dữ liệu kiểu nào?</h3>
-              <label><input type="radio" name="q2" value="structured"> Dữ liệu có cấu trúc (bảng, số)</label>
-              <label><input type="radio" name="q2" value="image"> Hình ảnh & Video</label>
-              <label><input type="radio" name="q2" value="text"> Text & Language</label>
-            </div>
-
-            <!-- câu hỏi 3 -->
-            <div class="qbox">
-              <h3>3) Bạn muốn học framework/library nào?</h3>
-              <label><input type="radio" name="q3" value="sklearn"> Scikit-learn (ML cơ bản)</label>
-              <label><input type="radio" name="q3" value="tf"> TensorFlow/Keras</label>
-              <label><input type="radio" name="q3" value="pytorch"> PyTorch</label>
-            </div>
-
-            <!-- câu hỏi 4 -->
-            <div class="qbox">
-              <h3>4) Bạn thích ứng dụng AI nào?</h3>
-              <label><input type="radio" name="q4" value="cv"> Computer Vision (nhận diện ảnh)</label>
-              <label><input type="radio" name="q4" value="nlp"> NLP (chatbot, dịch thuật)</label>
-              <label><input type="radio" name="q4" value="prediction"> Prediction & Analytics</label>
-            </div>
-
-            <!-- câu hỏi 5 -->
-            <div class="qbox">
-              <h3>5) Bạn quan tâm đến kỹ thuật nào?</h3>
-              <label><input type="radio" name="q5" value="supervised"> Supervised Learning</label>
-              <label><input type="radio" name="q5" value="unsupervised"> Unsupervised Learning</label>
-              <label><input type="radio" name="q5" value="rl"> Reinforcement Learning</label>
-            </div>
-
-            <!-- câu hỏi 6 -->
-            <div class="qbox">
-              <h3>6) Bạn thích model architecture nào?</h3>
-              <label><input type="radio" name="q6" value="cnn"> CNN (hình ảnh)</label>
-              <label><input type="radio" name="q6" value="rnn"> RNN/LSTM (chuỗi thời gian)</label>
-              <label><input type="radio" name="q6" value="transformer"> Transformer (NLP)</label>
-            </div>
-
-            <!-- câu hỏi 7 -->
-            <div class="qbox">
-              <h3>7) Bạn thích làm việc với tools nào?</h3>
-              <label><input type="radio" name="q7" value="jupyter"> Jupyter Notebook</label>
-              <label><input type="radio" name="q7" value="cloud"> Cloud AI (AWS SageMaker, GCP AI)</label>
-              <label><input type="radio" name="q7" value="automl"> AutoML platforms</label>
-            </div>
-
-            <!-- câu hỏi 8 -->
-            <div class="qbox">
-              <h3>8) Bạn có nền tảng toán mạnh không?</h3>
-              <label><input type="radio" name="q8" value="strong"> Rất tốt (Giải tích, Xác suất, Đại số)</label>
-              <label><input type="radio" name="q8" value="medium"> Trung bình (Học được)</label>
-              <label><input type="radio" name="q8" value="weak"> Yếu (Muốn dùng thư viện có sẵn)</label>
-            </div>
-
-            <!-- câu hỏi 9 -->
-            <div class="qbox">
-              <h3>9) Bạn thích dự án AI kiểu nào?</h3>
-              <label><input type="radio" name="q9" value="cv"> Nhận diện khuôn mặt/vật thể</label>
-              <label><input type="radio" name="q9" value="nlp"> Chatbot/Phân tích ngôn ngữ</label>
-              <label><input type="radio" name="q9" value="predict"> Dự đoán/Phân loại dữ liệu</label>
-            </div>
-
-            <!-- câu hỏi 10 -->
-            <div class="qbox">
-              <h3>10) Bạn quan tâm đến việc deploy AI như thế nào?</h3>
-              <label><input type="radio" name="q10" value="api"> REST API (Flask, FastAPI)</label>
-              <label><input type="radio" name="q10" value="edge"> Edge AI (Mobile, IoT)</label>
-              <label><input type="radio" name="q10" value="cloud"> Cloud deployment (scalable)</label>
-            </div>
-
-            <!-- câu hỏi 11 -->
-            <div class="qbox">
-              <h3>11) Bạn thích optimization technique nào?</h3>
-              <label><input type="radio" name="q11" value="sgd"> Gradient Descent variants</label>
-              <label><input type="radio" name="q11" value="hyperparameter"> Hyperparameter tuning</label>
-              <label><input type="radio" name="q11" value="architecture"> Architecture search</label>
-            </div>
-
-            <!-- câu hỏi 12 -->
-            <div class="qbox">
-              <h3>12) Bạn thích data preprocessing nào?</h3>
-              <label><input type="radio" name="q12" value="cleaning"> Data cleaning & preparation</label>
-              <label><input type="radio" name="q12" value="augmentation"> Data augmentation</label>
-              <label><input type="radio" name="q12" value="feature"> Feature engineering</label>
-            </div>
-
-            <!-- câu hỏi 13 -->
-            <div class="qbox">
-              <h3>13) Bạn quan tâm đến AI ethics không?</h3>
-              <label><input type="radio" name="q13" value="very"> Rất quan tâm (bias, fairness)</label>
-              <label><input type="radio" name="q13" value="medium"> Quan tâm vừa phải</label>
-              <label><input type="radio" name="q13" value="focus"> Tập trung vào kỹ thuật</label>
-            </div>
-
-            <!-- câu hỏi 14 -->
-            <div class="qbox">
-              <h3>14) Bạn muốn làm việc trong lĩnh vực nào?</h3>
-              <label><input type="radio" name="q14" value="cv"> Computer Vision Engineer</label>
-              <label><input type="radio" name="q14" value="nlp"> NLP Engineer</label>
-              <label><input type="radio" name="q14" value="mle"> Machine Learning Engineer</label>
-            </div>
-
-            <!-- câu hỏi 15 -->
-            <div class="qbox">
-              <h3>15) Mục tiêu học tập của bạn?</h3>
-              <label><input type="radio" name="q15" value="research"> Nghiên cứu & publish papers</label>
-              <label><input type="radio" name="q15" value="industry"> Áp dụng AI trong công nghiệp</label>
-              <label><input type="radio" name="q15" value="startup"> Build AI products/startup</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>Trí Tuệ Nhân Tạo</h3>
+              <p style="color: #64748b; margin: 20px 0;">
+                Xin 50k mua skin valorant
+              </p>
             </div>
           </div>
           <!-- END QUIZ AI -->
 
           <!-- ==================== QUIZ An toàn thông tin (SEC) ==================== -->
           <div class="quiz-set" data-subject="SEC" style="display:none;">
-            <!-- câu hỏi 1 -->
-            <div class="qbox">
-              <h3>1) Bạn thích lĩnh vực bảo mật nào?</h3>
-              <label><input type="radio" name="q1" value="offensive"> Offensive Security (Pentesting, Hacking)</label>
-              <label><input type="radio" name="q1" value="defensive"> Defensive Security (Protection, Detection)</label>
-              <label><input type="radio" name="q1" value="forensics"> Digital Forensics & Incident Response</label>
-            </div>
-
-            <!-- câu hỏi 2 -->
-            <div class="qbox">
-              <h3>2) Bạn thích học về loại tấn công nào?</h3>
-              <label><input type="radio" name="q2" value="web"> Web Application Security</label>
-              <label><input type="radio" name="q2" value="network"> Network Security</label>
-              <label><input type="radio" name="q2" value="system"> System & OS Security</label>
-            </div>
-
-            <!-- câu hỏi 3 -->
-            <div class="qbox">
-              <h3>3) Bạn thích công cụ bảo mật nào?</h3>
-              <label><input type="radio" name="q3" value="kali"> Kali Linux tools (Metasploit, Burp Suite)</label>
-              <label><input type="radio" name="q3" value="ids"> IDS/IPS (Snort, Suricata)</label>
-              <label><input type="radio" name="q3" value="siem"> SIEM & Log Analysis</label>
-            </div>
-
-            <!-- câu hỏi 4 -->
-            <div class="qbox">
-              <h3>4) Bạn quan tâm đến certification nào?</h3>
-              <label><input type="radio" name="q4" value="ceh"> CEH (Certified Ethical Hacker)</label>
-              <label><input type="radio" name="q4" value="oscp"> OSCP (Offensive Security)</label>
-              <label><input type="radio" name="q4" value="cissp"> CISSP (Security Management)</label>
-            </div>
-
-            <!-- câu hỏi 5 -->
-            <div class="qbox">
-              <h3>5) Bạn thích vulnerability type nào?</h3>
-              <label><input type="radio" name="q5" value="injection"> Injection (SQL, XSS, Command)</label>
-              <label><input type="radio" name="q5" value="crypto"> Cryptography vulnerabilities</label>
-              <label><input type="radio" name="q5" value="config"> Misconfigurations & Weak settings</label>
-            </div>
-
-            <!-- câu hỏi 6 -->
-            <div class="qbox">
-              <h3>6) Bạn thích platform nào để test?</h3>
-              <label><input type="radio" name="q6" value="web"> Web apps & APIs</label>
-              <label><input type="radio" name="q6" value="mobile"> Mobile applications</label>
-              <label><input type="radio" name="q6" value="cloud"> Cloud infrastructure</label>
-            </div>
-
-            <!-- câu hỏi 7 -->
-            <div class="qbox">
-              <h3>7) Bạn thích scripting language nào?</h3>
-              <label><input type="radio" name="q7" value="python"> Python (exploit development)</label>
-              <label><input type="radio" name="q7" value="bash"> Bash/PowerShell scripting</label>
-              <label><input type="radio" name="q7" value="low"> C/Assembly (low-level)</label>
-            </div>
-
-            <!-- câu hỏi 8 -->
-            <div class="qbox">
-              <h3>8) Bạn có thích reverse engineering không?</h3>
-              <label><input type="radio" name="q8" value="love"> Rất thích (malware analysis)</label>
-              <label><input type="radio" name="q8" value="ok"> Bình thường</label>
-              <label><input type="radio" name="q8" value="prefer"> Thích pentesting hơn</label>
-            </div>
-
-            <!-- câu hỏi 9 -->
-            <div class="qbox">
-              <h3>9) Bạn thích dự án bảo mật nào?</h3>
-              <label><input type="radio" name="q9" value="pentest"> Penetration testing projects</label>
-              <label><input type="radio" name="q9" value="soc"> SOC & monitoring setup</label>
-              <label><input type="radio" name="q9" value="incident"> Incident response & forensics</label>
-            </div>
-
-            <!-- câu hỏi 10 -->
-            <div class="qbox">
-              <h3>10) Bạn thích compliance & standards không?</h3>
-              <label><input type="radio" name="q10" value="no"> Không thích - Prefer technical</label>
-              <label><input type="radio" name="q10" value="ok"> Bình thường</label>
-              <label><input type="radio" name="q10" value="yes"> Thích (ISO, NIST, PCI-DSS)</label>
-            </div>
-
-            <!-- câu hỏi 11 -->
-            <div class="qbox">
-              <h3>11) Bạn thích CTF challenges kiểu nào?</h3>
-              <label><input type="radio" name="q11" value="web"> Web exploitation</label>
-              <label><input type="radio" name="q11" value="binary"> Binary exploitation & PWN</label>
-              <label><input type="radio" name="q11" value="crypto"> Cryptography challenges</label>
-            </div>
-
-            <!-- câu hỏi 12 -->
-            <div class="qbox">
-              <h3>12) Bạn thích môi trường làm việc nào?</h3>
-              <label><input type="radio" name="q12" value="redteam"> Red Team (tấn công)</label>
-              <label><input type="radio" name="q12" value="blueteam"> Blue Team (phòng thủ)</label>
-              <label><input type="radio" name="q12" value="purple"> Purple Team (cả hai)</label>
-            </div>
-
-            <!-- câu hỏi 13 -->
-            <div class="qbox">
-              <h3>13) Bạn quan tâm đến social engineering không?</h3>
-              <label><input type="radio" name="q13" value="very"> Rất quan tâm (phishing, vishing)</label>
-              <label><input type="radio" name="q13" value="some"> Một chút</label>
-              <label><input type="radio" name="q13" value="technical"> Thích technical hơn</label>
-            </div>
-
-            <!-- câu hỏi 14 -->
-            <div class="qbox">
-              <h3>14) Vai trò bạn muốn làm?</h3>
-              <label><input type="radio" name="q14" value="pentester"> Penetration Tester</label>
-              <label><input type="radio" name="q14" value="analyst"> Security Analyst</label>
-              <label><input type="radio" name="q14" value="architect"> Security Architect</label>
-            </div>
-
-            <!-- câu hỏi 15 -->
-            <div class="qbox">
-              <h3>15) Mục tiêu nghề nghiệp của bạn?</h3>
-              <label><input type="radio" name="q15" value="offensive"> Offensive Security Specialist</label>
-              <label><input type="radio" name="q15" value="defensive"> Defensive Security Specialist</label>
-              <label><input type="radio" name="q15" value="researcher"> Security Researcher</label>
+            <div class="qbox" data-max-selections="3">
+              <h3>An Toàn Thông Tin</h3>
+              <p style="color: #64748b; margin: 20px 0;">
+                99 Bắc Ninh
+              </p>
             </div>
           </div>
           <!-- END QUIZ SEC -->
@@ -521,7 +342,7 @@
           <!-- ==================== (placeholder) ==================== -->
 
           <div class="quiz-set" data-subject="VM" style="display:none;">
-            <div class="qbox">
+            <div class="qbox" data-max-selections="3">
               <h3>Vi mạch bán dẫn</h3>
               <p style="color: #64748b; margin: 20px 0;">
                 43 Da Nang
@@ -530,7 +351,7 @@
           </div>
 
           <div class="quiz-set" data-subject="CNGT" style="display:none;">
-            <div class="qbox">
+            <div class="qbox" data-max-selections="3">
               <h3>Công nghệ ô tô số</h3>
               <p style="color: #64748b; margin: 20px 0;">
                 75 Hue
@@ -539,7 +360,7 @@
           </div>
 
           <div class="quiz-set" data-subject="HTTT" style="display:none;">
-            <div class="qbox">
+            <div class="qbox" data-max-selections="3">
               <h3>Hệ thống thông tin</h3>
               <p style="color: #64748b; margin: 20px 0;">
                 27 Dien Bien
@@ -548,7 +369,7 @@
           </div>
 
           <div class="quiz-set" data-subject="GD" style="display:none;">
-            <div class="qbox">
+            <div class="qbox" data-max-selections="3">
               <h3>Thiết kế đồ hoạ & mỹ thuật số </h3>
               <p style="color: #64748b; margin: 20px 0;">
                 36 Thanh Hoa
