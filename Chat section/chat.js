@@ -58,21 +58,21 @@ Hãy trả lời ngắn gọn, dễ hiểu, thực tế. Tất cả câu trả l
 `;
 
   try {
-    const res = await fetch("http://localhost:11434/api/generate", {
+    //const res = await fetch("http://localhost:11434/api/generate", {
+    const res = await fetch("/chat", {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "llama3:8b",
-        prompt,
-        stream: false
+        message: question 
       })
     });
 
     const data = await res.json();
 
     // ✨ GÕ CHỮ DẦN
-    typeText(aiBox, data.response, 18);
-    saveChatHistory(question, data.response);
+    typeText(aiBox, data.reply, 18);
+    saveChatHistory(question, data.reply);
     renderHistoryBox();
 
   } catch {

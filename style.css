@@ -66,24 +66,34 @@ body .container {
   margin-top: 40px;
 }
 
-button {
-  width: 420px;          /* 👈 chỉnh hẹp / rộng tại đây */
-  max-width: 90%;
-  padding: 18px 24px;    /* 👈 làm nút bự */
-  font-size: 20px;       /* 👈 chữ to */
+button{
+  max-width: 100%;
+  width: 420px;
+  padding: 18px 24px;
+  font-size: 20px;
   border-radius: 12px;
   border: 1px solid #d0d7de;
   background: #fff;
   cursor: pointer;
-  transition: all 0.25s ease;
-  margin-right: 40px;
+  margin: 0 auto;
 
-
+  transition: background .25s ease,
+              box-shadow .25s ease,
+              transform .15s ease;
 }
+
+/* Hover */
 button:hover{
   background: #8aef8a;
-  transform: translateY(-2px);
+  transform: scale(1.015); /* thay vì translateY */
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
+
+/* Click */
+button:active{
+  transform: scale(.98);
+}
+
 /* Ngành CNTT – active */
 .column.active button {
   background: #2563eb;
@@ -188,27 +198,6 @@ label {
     position: static;
   }
 }
-/* .ai-box {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 600px;
-  margin: auto;
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 10px;
-}
-
-#answer {
-  margin-top: 15px;
-  background: #f1f5f9;
-  padding: 12px;
-  border-radius: 8px;
-  white-space: pre-wrap;
-} */
 
 .music-btn {
   position: fixed;
@@ -370,6 +359,7 @@ textarea {
 
 .option-card {
   background: white;
+  display: block;
   border-radius: 16px;
   padding: 0;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -405,6 +395,8 @@ textarea {
 
 .option-card button {
   width: 100%;
+  min-width: 0;
+  display: block;
   padding: 32px 30px;
   font-size: 1.3rem;
   border: none;
