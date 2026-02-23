@@ -103,31 +103,26 @@ const majorsByGD = {
     score: 0,
     desc: "Bạn phù hợp với việc kể chuyện bằng hình ảnh và chuyển động phẳng, tập trung vào biểu cảm, nhịp điệu và phong cách minh họa."
   },
-
   Anim3D: {
     name: "3D Animation",
     score: 0,
     desc: "Bạn phù hợp với xây dựng nhân vật và chuyển động trong không gian ba chiều, làm việc với mô hình, ánh sáng và vật liệu."
   },
-
   Interactive: {
     name: "Interactive Design (UI/UX)",
     score: 0,
     desc: "Bạn phù hợp với thiết kế trải nghiệm người dùng, giao diện ứng dụng và tối ưu cách người dùng tương tác với sản phẩm số."
   },
-
   Communication: {
     name: "Communication Design",
     score: 0,
     desc: "Bạn phù hợp với truyền tải thông điệp qua hình ảnh như nhận diện thương hiệu, ấn phẩm, bao bì và thiết kế sự kiện."
   },
-
   DigitalAnim: {
     name: "Digital Animation",
     score: 0,
     desc: "Bạn phù hợp với sáng tạo hoạt hình kỹ thuật số linh hoạt, kết hợp nhiều kỹ thuật 2D và 3D để tạo sản phẩm sinh động."
   },
-
   Multimedia: {
     name: "Multimedia Communication Design",
     score: 0,
@@ -141,19 +136,16 @@ const majorsByIC = {
     score: 0,
     desc: "Bạn phù hợp với phát triển robot tự động, robot cộng tác và các hệ thống có khả năng tương tác với môi trường thực."
   },
-
   IoT: {
     name: "Internet of Things (IoT)",
     score: 0,
     desc: "Bạn phù hợp với xây dựng hệ thống thiết bị kết nối, phần mềm nhúng và các nền tảng thông minh liên kết nhiều phần cứng."
   },
-
   PackagingTesting: {
     name: "IC Packaging & Testing",
     score: 0,
     desc: "Bạn phù hợp với đảm bảo chất lượng vi mạch, kiểm thử, thẩm định và quy trình sản xuất công nghiệp."
   },
-
   ICOptimization: {
     name: "IC Design Optimization",
     score: 0,
@@ -167,13 +159,11 @@ const majorsByAS = {
     score: 0,
     desc: "Bạn phù hợp với phát triển kiến trúc phần mềm ô tô, đảm bảo an toàn chức năng, độ ổn định và tuân thủ tiêu chuẩn hệ thống."
   },
-
   IVI: {
     name: "In-Vehicle Infotainment (IVI)",
     score: 0,
     desc: "Bạn phù hợp với phát triển hệ thống giải trí và trải nghiệm người dùng trên ô tô, làm việc với Android/Linux và giao diện tương tác."
   },
-
   SelfDriving: {
     name: "Self-Driving Car Engineering",
     score: 0,
@@ -187,13 +177,11 @@ const majorsByIA = {
     score: 0,
     desc: "Bạn phù hợp với thiết kế và phát triển phần mềm an toàn ngay từ đầu, tích hợp bảo mật vào vòng đời phát triển."
   },
-
   SysSec: {
     name: "System & Network Security",
     score: 0,
     desc: "Bạn phù hợp với vận hành, giám sát, điều tra và ứng phó sự cố trong hệ thống và mạng thực tế."
   },
-
   AISec: {
     name: "AI for Cyber Security",
     score: 0,
@@ -207,25 +195,21 @@ const majorsByIS = {
     score: 0,
     desc: "Bạn phù hợp với phân tích nghiệp vụ, quản lý quy trình và hỗ trợ ra quyết định trong tổ chức."
   },
-
   SAP: {
     name: "SAP / ERP Systems",
     score: 0,
     desc: "Bạn phù hợp với triển khai và vận hành hệ thống quản trị doanh nghiệp tích hợp quy mô lớn."
   },
-
   SoftwareQuality: {
     name: "Software System Quality",
     score: 0,
     desc: "Bạn phù hợp với kiểm thử, đảm bảo chất lượng và cải thiện độ tin cậy của hệ thống phần mềm."
   },
-
   ISSecurity: {
     name: "Cybersecurity for Information Systems",
     score: 0,
     desc: "Bạn phù hợp với bảo vệ hệ thống thông tin và quản lý rủi ro an toàn trong tổ chức."
   },
-
   ISDataScience: {
     name: "Applied Data Science in IS",
     score: 0,
@@ -247,16 +231,22 @@ switch(subject) {
     break;
   case 'IC':
     majors = majorsByIC;
+    break;
   case 'AS':
     majors = majorsByAS;
+    break;
   case 'IA':
     majors = majorsByIA;
+    break;
   case 'GD':
     majors = majorsByGD;
+    break;
   case 'IS':
-    majors = majorsByIS
+    majors = majorsByIS;
+    break;
   default:
     majors = majorsByCNTT;
+    break;
 }
 
 form.addEventListener("submit", function(e) {

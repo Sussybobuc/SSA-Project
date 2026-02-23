@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Bạn đang phân vân?</title>
-  <link rel="icon" type="image/x-icon" href="Website Materials/favicon.ico">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="question-page">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bạn đang phân vân?</title>
+    <link rel="icon" type="image/x-icon" href="Website Materials/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="question-page">
 
-<div class="question-container">
-  <h1>Bạn đang phân vân về điều gì?</h1>
-  <p class="question-subtitle">Hãy chọn các mục dưới đây</p>
+    <div class="question-container">
+      <h1>Bạn đang phân vân về điều gì?</h1>
+      <p class="question-subtitle">Hãy chọn các mục dưới đây</p>
 
-  <!-- Nút chọn chuyển hướng -->
-  <div class="options-grid">
-    <div class="option-card">
-      <button onclick="startQuiz()">
-        <div class="option-text">
-          <div class="option-title">Chọn chuyên ngành hẹp phù hợp</div>
-          <div class="option-desc">Tìm chuyên ngành hẹp</div>
+      <!-- Nút chọn chuyển hướng -->
+      <div class="options-grid">
+        <div class="option-card">
+          <button onclick="startQuiz()">
+            <div class="option-text">
+              <div class="option-title">Chọn chuyên ngành hẹp phù hợp</div>
+              <div class="option-desc">Tìm chuyên ngành hẹp</div>
+            </div>
+          </button>
         </div>
-      </button>
+
+        <div class="option-card">
+          <button onclick="location.href='Chat section/career.html'">
+            <div class="option-text">
+              <div class="option-title">Cơ hội nghề nghiệp</div>
+              <div class="option-desc">Tìm hiểu về các cơ hội nghề nghiệp trong
+                tương lai</div>
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="option-card">
-      <button onclick="location.href='Chat section/career.html'">
-        <div class="option-text">
-          <div class="option-title">Cơ hội nghề nghiệp</div>
-          <div class="option-desc">Tìm hiểu về các cơ hội nghề nghiệp trong tương lai</div>
-        </div>
-      </button>
-    </div>
-  </div>
-</div>
+    <button id="musicToggle" onclick="toggleMusic()"
+      class="music-btn">🔊</button>
 
-<button id="musicToggle" onclick="toggleMusic()" class="music-btn">🔊</button>
+    <audio id="bgMusic" loop>
+      <source src="./Website Materials/music.mp3" type="audio/mpeg">
+    </audio>
 
-<audio id="bgMusic" loop>
-  <source src="./Website Materials/music.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

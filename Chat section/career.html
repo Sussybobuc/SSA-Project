@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <title>AI Chat</title>
-  <link rel="icon" type="image/x-icon" href="../Website Materials/favicon.ico">
-  <link rel="stylesheet" href="chat.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Chat</title>
+    <link rel="icon" type="image/x-icon"
+      href="../Website Materials/favicon.ico">
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
 
-<div class="chat-app">
-  <!-- HEADER -->
-  <header class="chat-header">
-    <span>🤖 QuizAI</span>
-  </header>
+    <div class="chat-app">
+      <!-- HEADER -->
+      <header class="chat-header">
+        <span>🤖 QuizAI</span>
+      </header>
 
-  <!-- CHAT CONTENT -->
-  <main class="chat-body" id="chatBody">
-    <div class="msg ai">
-      <div class="bubble">
-        Xin chào 👋 Tôi có thể giúp gì cho bạn?
+      <!-- CHAT CONTENT -->
+      <main class="chat-body" id="chatBody">
+        <div class="msg ai">
+          <div class="bubble">
+            Xin chào 👋 Tôi có thể giúp gì cho bạn?
+          </div>
+        </div>
+      </main>
+
+      <!-- INPUT -->
+      <footer class="chat-input">
+        <input id="career-question" type="text" placeholder="Nhập câu hỏi..." />
+        <button id="sendBtn">➤</button>
+      </footer>
+    </div>
+    <button id="themeToggle" class="theme-btn">🌙</button>
+
+    <div class="history-sidebar" id="historySidebar">
+      <!-- TOGGLE BUTTON -->
+      <button id="toggleHistory" class="toggle-history">☰</button>
+
+      <div class="history-header">
+        <h3>🕘 Lịch sử</h3>
+        <button class="clear-btn" onclick="openConfirm()">Xóa tất cả</button>
+      </div>
+
+      <ul id="aiHistoryList"></ul>
+    </div>
+    <!-- CONFIRM DELETE POPUP -->
+    <div class="modal-overlay" id="confirmOverlay">
+      <div class="confirm-modal">
+        <h3>🗑️ Xóa toàn bộ lịch sử?</h3>
+        <p>Hành động này không thể hoàn tác.</p>
+
+        <div class="modal-actions">
+          <button class="btn cancel" onclick="closeConfirm()">Hủy</button>
+          <button class="btn danger" onclick="confirmClear()">Xóa</button>
+        </div>
       </div>
     </div>
-  </main>
-
-  <!-- INPUT -->
-  <footer class="chat-input">
-    <input id="career-question" type="text" placeholder="Nhập câu hỏi..." />
-    <button id="sendBtn">➤</button>
-  </footer>
-</div>
-<button id="themeToggle" class="theme-btn">🌙</button>
-
-<div class="history-sidebar" id="historySidebar">
-  <!-- TOGGLE BUTTON -->
-  <button id="toggleHistory" class="toggle-history">☰</button>
-
-  <div class="history-header">
-    <h3>🕘 Lịch sử</h3>
-    <button class="clear-btn" onclick="openConfirm()">Xóa tất cả</button>
-  </div>
-
-  <ul id="aiHistoryList"></ul>
-</div>
-<!-- CONFIRM DELETE POPUP -->
-<div class="modal-overlay" id="confirmOverlay">
-  <div class="confirm-modal">
-    <h3>🗑️ Xóa toàn bộ lịch sử?</h3>
-    <p>Hành động này không thể hoàn tác.</p>
-
-    <div class="modal-actions">
-      <button class="btn cancel" onclick="closeConfirm()">Hủy</button>
-      <button class="btn danger" onclick="confirmClear()">Xóa</button>
-    </div>
-  </div>
-</div>
-<script src="chat.js"></script>
-</body>
+    <script src="chat.js"></script>
+  </body>
 </html>
