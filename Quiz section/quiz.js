@@ -11,14 +11,33 @@ function addPoints(value) {
   });
 }
 
+function getActiveQuizSet() {
+  return document.querySelector(`.quiz-set[data-subject="${subject}"]`);
+}
+
 function getAnsweredCount() {
   const total = 20;
   let answered = 0;
+  const activeSet = getActiveQuizSet();
+  if (!activeSet) return 0;
   for (let i = 1; i <= total; i++) {
-    const checked = form.querySelectorAll(`input[name="q${i}"]:checked`);
+    const checked = activeSet.querySelectorAll(`input[name="q${i}"]:checked`);
     if (checked.length > 0) answered++;
   }
   return answered;
+}
+
+function getFirstUnansweredQbox() {
+  const activeSet = getActiveQuizSet();
+  if (!activeSet) return null;
+  for (let i = 1; i <= 20; i++) {
+    const checked = activeSet.querySelectorAll(`input[name="q${i}"]:checked`);
+    if (checked.length === 0) {
+      const input = activeSet.querySelector(`input[name="q${i}"]`);
+      return input ? input.closest('.qbox') : null;
+    }
+  }
+  return null;
 }
 
 //Change title based on subject chosen from Index.html/Question.html
@@ -251,12 +270,18 @@ switch(subject) {
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  window.scrollTo({ top: 0, behavior: "smooth" });
   const answered = getAnsweredCount();
   if (answered < 20) {
+    const firstUnanswered = getFirstUnansweredQbox();
+    if (firstUnanswered) {
+      firstUnanswered.scrollIntoView({ behavior: "smooth", block: "center" });
+      firstUnanswered.classList.add("unanswered-highlight");
+      setTimeout(() => firstUnanswered.classList.remove("unanswered-highlight"), 1500);
+    }
     alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 20 câu nhé!");
     return;
   }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   resetScores();
 
@@ -312,7 +337,11 @@ form.addEventListener("change", function(e) {
     const qboxElement = e.target.closest('.qbox');
     const maxSelections = qboxElement ? parseInt(qboxElement.dataset.maxSelections || "1") : 1;
     
-    const checkedBoxes = form.querySelectorAll(`input[name="${questionName}"]:checked`);
+    // Only count checked boxes within the active quiz-set
+    const activeSet = getActiveQuizSet();
+    const checkedBoxes = activeSet
+      ? activeSet.querySelectorAll(`input[name="${questionName}"]:checked`)
+      : form.querySelectorAll(`input[name="${questionName}"]:checked`);
     
     if (checkedBoxes.length > maxSelections) {
       e.target.checked = false;
