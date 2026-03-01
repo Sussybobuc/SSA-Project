@@ -11,14 +11,33 @@ function addPoints(value) {
   });
 }
 
+function getActiveQuizSet() {
+  return document.querySelector(`.quiz-set[data-subject="${subject}"]`);
+}
+
 function getAnsweredCount() {
   const total = 20;
   let answered = 0;
+  const activeSet = getActiveQuizSet();
+  if (!activeSet) return 0;
   for (let i = 1; i <= total; i++) {
-    const checked = form.querySelectorAll(`input[name="q${i}"]:checked`);
+    const checked = activeSet.querySelectorAll(`input[name="q${i}"]:checked`);
     if (checked.length > 0) answered++;
   }
   return answered;
+}
+
+function getFirstUnansweredQbox() {
+  const activeSet = getActiveQuizSet();
+  if (!activeSet) return null;
+  for (let i = 1; i <= 20; i++) {
+    const checked = activeSet.querySelectorAll(`input[name="q${i}"]:checked`);
+    if (checked.length === 0) {
+      const input = activeSet.querySelector(`input[name="q${i}"]`);
+      return input ? input.closest('.qbox') : null;
+    }
+  }
+  return null;
 }
 
 //Change title based on subject chosen from Index.html/Question.html
@@ -57,11 +76,11 @@ const stickyWrap = document.querySelector(".sticky-wrapper");
 
 // Different majors for different quiz types
 const majorsByCNTT = {
-  placeholder1: { name: ":3 1", score: 0, desc: "Con quỷ có thể khóc" },
-  placeholder2: { name: ":3 2", score: 0, desc: "Tâm trí = Bị kiểm soát" },
-  placeholder3:{ name: ":3 3", score: 0, desc: "Vì cái vibes" },
-  placeholder4:{ name: ":3 4", score: 0, desc: "Tra vít code" },
-  placeholder5: { name: ":3 5", score: 0, desc: "Hitler bé nhỏ" },
+  se: { name: "Kỹ thuật phần mềm (Software Engineering)", score: 0, desc: "Hợp với bạn nếu bạn thích code sản phẩm, làm web/app, teamwork và xây tính năng." },
+  ai: { name: "Khoa học dữ liệu / AI (Data Science & AI)", score: 0, desc: "Hợp với bạn nếu bạn thích dữ liệu, mô hình, phân tích, ML và học sâu kiến thức." },
+  sec:{ name: "An ninh mạng (Cyber Security)", score: 0, desc: "Hợp với bạn nếu bạn thích bảo mật, kiểm tra lỗ hổng, hệ thống và tư duy phòng thủ." },
+  net:{ name: "Mạng máy tính / Cloud (Network & Cloud)", score: 0, desc: "Bạn phù hợp với bạn nếu bạn thích server, hạ tầng, mạng, Linux và vận hành hệ thống." },
+  it: { name: "Hệ thống thông tin (Information Systems)", score: 0, desc: "Hợp với bạn nếu bạn thích phân tích yêu cầu, quy trình, quản lý dữ liệu và kết nối giữa kỹ thuật - người dùng." },
 };
 // MAJORS OBJECT 
 // SE VALUE
@@ -251,12 +270,18 @@ switch(subject) {
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  window.scrollTo({ top: 0, behavior: "smooth" });
   const answered = getAnsweredCount();
   if (answered < 20) {
+    const firstUnanswered = getFirstUnansweredQbox();
+    if (firstUnanswered) {
+      firstUnanswered.scrollIntoView({ behavior: "smooth", block: "center" });
+      firstUnanswered.classList.add("unanswered-highlight");
+      setTimeout(() => firstUnanswered.classList.remove("unanswered-highlight"), 1500);
+    }
     alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 20 câu nhé!");
     return;
   }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   resetScores();
 
@@ -312,7 +337,11 @@ form.addEventListener("change", function(e) {
     const qboxElement = e.target.closest('.qbox');
     const maxSelections = qboxElement ? parseInt(qboxElement.dataset.maxSelections || "1") : 1;
     
-    const checkedBoxes = form.querySelectorAll(`input[name="${questionName}"]:checked`);
+    // Only count checked boxes within the active quiz-set
+    const activeSet = getActiveQuizSet();
+    const checkedBoxes = activeSet
+      ? activeSet.querySelectorAll(`input[name="${questionName}"]:checked`)
+      : form.querySelectorAll(`input[name="${questionName}"]:checked`);
     
     if (checkedBoxes.length > maxSelections) {
       e.target.checked = false;

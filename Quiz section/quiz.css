@@ -249,6 +249,18 @@ label {
   transform: translateY(-2px);
 }
 
+.qbox.unanswered-highlight {
+  outline: 2px solid #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}
+
 .qbox h3 {
   color: #1e293b;
   margin-bottom: 16px;
