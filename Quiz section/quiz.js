@@ -57,11 +57,11 @@ const stickyWrap = document.querySelector(".sticky-wrapper");
 
 // Different majors for different quiz types
 const majorsByCNTT = {
-  placeholder1: { name: ":3 1", score: 0, desc: "Con quỷ có thể khóc" },
-  placeholder2: { name: ":3 2", score: 0, desc: "Tâm trí = Bị kiểm soát" },
-  placeholder3:{ name: ":3 3", score: 0, desc: "Vì cái vibes" },
-  placeholder4:{ name: ":3 4", score: 0, desc: "Tra vít code" },
-  placeholder5: { name: ":3 5", score: 0, desc: "Hitler bé nhỏ" },
+  se: { name: "Kỹ thuật phần mềm (Software Engineering)", score: 0, desc: "Hợp với bạn nếu bạn thích code sản phẩm, làm web/app, teamwork và xây tính năng." },
+  ai: { name: "Khoa học dữ liệu / AI (Data Science & AI)", score: 0, desc: "Hợp với bạn nếu bạn thích dữ liệu, mô hình, phân tích, ML và học sâu kiến thức." },
+  sec:{ name: "An ninh mạng (Cyber Security)", score: 0, desc: "Hợp với bạn nếu bạn thích bảo mật, kiểm tra lỗ hổng, hệ thống và tư duy phòng thủ." },
+  net:{ name: "Mạng máy tính / Cloud (Network & Cloud)", score: 0, desc: "Bạn phù hợp với bạn nếu bạn thích server, hạ tầng, mạng, Linux và vận hành hệ thống." },
+  it: { name: "Hệ thống thông tin (Information Systems)", score: 0, desc: "Hợp với bạn nếu bạn thích phân tích yêu cầu, quy trình, quản lý dữ liệu và kết nối giữa kỹ thuật - người dùng." },
 };
 // MAJORS OBJECT 
 // SE VALUE

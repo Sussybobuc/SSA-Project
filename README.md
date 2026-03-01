@@ -1,2 +1,1 @@
 - Improve UI/UX overall
-- Majors's question done
