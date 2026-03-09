@@ -1,5 +1,4 @@
 - Improve UI/UX overall
-- Project's name (Bright Ways) logo in Index.html
 - Slave dungeon (Forum)
 - Better layout for Index (Main webpage)
 - Fix the Layout for other majors in Main
@@ -7,7 +6,7 @@
 - Egg
 
 Doing now:
-- Top bar menu for navigation
+- Top bar menu for navigation (Done)
     - Back and front buttons + reload 
     - Display date
     - Status for AI (Mem or shit)

@@ -1,5 +1,26 @@
 //Scripts
 
+/* ===== HAMBURGER MENU ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+  }
+});
+
 //Handles startup UI initialization and background music setup
 window.addEventListener("DOMContentLoaded", () => {
   const startup = document.getElementById("startup");
