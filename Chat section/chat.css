@@ -1,7 +1,5 @@
 * {
   box-sizing: border-box;
-}
-* {
   transition:
     background-color 0.35s ease,
     color 0.35s ease,
@@ -88,6 +86,61 @@ body {
   align-items: center;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BROWSER-STYLE NAV CONTROLS */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.nav-btn:active {
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(0.92);
+}
+
+/* DATE DISPLAY */
+.nav-date {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
 .nav-brand {
   font-size: 1.8rem;
   font-weight: 700;
@@ -146,6 +199,20 @@ body {
 }
 
 @media (max-width: 768px) {
+  .nav-date {
+    display: none;
+  }
+
+  .nav-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .nav-controls {
+    gap: 2px;
+  }
+
   .nav-menu {
     position: fixed;
     left: -100%;
@@ -194,7 +261,6 @@ body {
   max-width: 720px;
   height: calc(100vh - 70px);
   margin: auto;
-  margin-top: 70px;
   background: white;
   display: flex;
   flex-direction: column;
@@ -306,10 +372,10 @@ body.dark .chat-header {
 /* SIDEBAR */
 .history-sidebar {
   position: fixed;
-  top: 0;
+  top: 70px;
   left: 0;
   width: 280px;
-  height: 100vh;
+  height: calc(100vh - 70px);
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   padding: 14px;

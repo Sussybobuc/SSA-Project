@@ -164,6 +164,20 @@ html, body {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .nav-date {
+    display: none;
+  }
+
+  .nav-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .nav-controls {
+    gap: 2px;
+  }
+
   .nav-menu {
     position: fixed;
     left: -100%;
@@ -205,10 +219,6 @@ html, body {
 
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  .nav-date {
-    display: none;
   }
 
   body {
@@ -651,4 +661,94 @@ label {
   flex-direction: column;
   text-align: center;
 }
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-btn {
+  position: fixed;
+  top: 85px;
+  right: 16px;
+  border: none;
+  width: auto;
+  background: #1e293b;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+}
+
+.theme-btn:hover {
+  transform: scale(1.05);
+  background: #334155;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #e5e7eb;
+}
+
+/* Index page */
+body.dark .column {
+  background: #1e293b;
+  color: #e5e7eb;
+}
+
+body.dark .column-title {
+  background: #c2410c;
+}
+
+body.dark .column.active button {
+  background: #1d4ed8;
+  border-color: #1e40af;
+}
+
+body.dark .column.active button:hover {
+  background: #1e40af;
+}
+
+body.dark .column.disabled button {
+  background: #374151;
+  color: #9ca3af;
+}
+
+body.dark button {
+  background: #1e293b;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+
+body.dark button:hover {
+  background: #334155;
+}
+
+/* Question page */
+body.dark .question-page {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+body.dark .option-card {
+  background: #1e293b;
+}
+
+body.dark .option-card button {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #e5e7eb;
+}
+
+body.dark .option-card:hover button {
+  background: linear-gradient(135deg, #166534 0%, #15803d 100%);
+}
+
+body.dark .option-desc {
+  color: #94a3b8;
 }

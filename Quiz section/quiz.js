@@ -35,7 +35,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateNavDate();
   setInterval(updateNavDate, 60000);
+
+  /* ===== DARK MODE PERSISTENCE ===== */
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+
+  if (!document.getElementById("themeToggle")) {
+    const btn = document.createElement("button");
+    btn.id = "themeToggle";
+    btn.className = "theme-btn";
+    btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    btn.onclick = () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        btn.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        btn.textContent = "🌙";
+      }
+    };
+    document.body.appendChild(btn);
+  }
 });
+
+/* ===== TOAST NOTIFICATION ===== */
+function showQuizToast(message) {
+  const toast = document.getElementById("quizToast");
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add("active");
+  clearTimeout(toast._hideTimer);
+  toast._hideTimer = setTimeout(() => toast.classList.remove("active"), 3000);
+}
+
+/* ===== PROGRESS COUNTER ===== */
+function updateProgress() {
+  const el = document.getElementById("quizProgress");
+  if (!el) return;
+  const answered = getAnsweredCount();
+  el.textContent = `${answered} / 20 câu đã trả lời`;
+  el.className = "quiz-progress" + (answered === 20 ? " complete" : "");
+}
 
 function resetScores() {
   Object.keys(majors).forEach(k => majors[k].score = 0);
@@ -291,9 +333,6 @@ switch(subject) {
   case 'AS':
     majors = majorsByAS;
     break;
-  case 'IA':
-    majors = majorsByIA;
-    break;
   case 'GD':
     majors = majorsByGD;
     break;
@@ -315,7 +354,7 @@ form.addEventListener("submit", function(e) {
       firstUnanswered.classList.add("unanswered-highlight");
       setTimeout(() => firstUnanswered.classList.remove("unanswered-highlight"), 1500);
     }
-    alert("Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 20 câu nhé!");
+    showQuizToast("⚠️ Bạn chưa trả lời hết câu hỏi. Vui lòng trả lời đủ 20 câu nhé!");
     return;
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -382,9 +421,10 @@ form.addEventListener("change", function(e) {
     
     if (checkedBoxes.length > maxSelections) {
       e.target.checked = false;
-      alert(`Bạn chỉ được chọn tối đa ${maxSelections} đáp án cho câu hỏi này!`);
+      showQuizToast(`⚠️ Bạn chỉ được chọn tối đa ${maxSelections} đáp án cho câu hỏi này!`);
     }
   }
+  updateProgress();
 });
 
 // ===== NHẠC NỀN TỰ ĐỘNG =====

@@ -285,3 +285,62 @@ body {
     font-size: 1.3rem;
   }
 }
+
+/* ===== DARK MODE ===== */
+body.dark .about-container {
+  color: #e5e7eb;
+}
+
+body.dark .about-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%);
+}
+
+body.dark .about-section,
+body.dark .features-section,
+body.dark .team-section,
+body.dark .support-section {
+  color: #e5e7eb;
+}
+
+body.dark .section-content h2 {
+  color: #e5e7eb;
+}
+
+body.dark .info-card,
+body.dark .support-card {
+  background: #1e293b;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+
+body.dark .feature-card {
+  background: #1e293b;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+
+body.dark .feature-card h3 {
+  color: #fbbf24;
+}
+
+body.dark .feature-card p {
+  color: #94a3b8;
+}
+
+body.dark .about-footer {
+  border-top-color: #334155;
+  color: #94a3b8;
+}
+
+body.dark .about-footer p:first-child {
+  color: #e5e7eb;
+}
+
+body.dark .qr-placeholder {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .qr-text {
+  color: #94a3b8;
+}

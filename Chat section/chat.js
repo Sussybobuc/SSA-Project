@@ -78,6 +78,10 @@ async function askCareerAI() {
 
   const question = input.value.trim();
   if (!question) return;
+  if (question.length > 500) {
+    addMessage("⚠️ Câu hỏi quá dài (tối đa 500 ký tự).", "ai");
+    return;
+  }
 
   // USER MESSAGE
   addMessage(question, "user");
@@ -190,7 +194,14 @@ function renderHistoryBox() {
 }
 function loadChatHistory() {
   const history = JSON.parse(localStorage.getItem("careerAI_history")) || [];
+  if (history.length === 0) return;
+
   const chatBody = document.getElementById("chatBody");
+  chatBody.innerHTML = "";
+
+  const last = history[history.length - 1];
+  addMessage(last.question, "user");
+  addMessage(last.answer, "ai");
 }
 // Delete history
 function removeHistory(index, element) {

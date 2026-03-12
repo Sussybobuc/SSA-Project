@@ -35,6 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateNavDate();
   setInterval(updateNavDate, 60000);
+
+  /* ===== DARK MODE PERSISTENCE ===== */
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+
+  if (!document.getElementById("themeToggle")) {
+    const btn = document.createElement("button");
+    btn.id = "themeToggle";
+    btn.className = "theme-btn";
+    btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    btn.onclick = () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        btn.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        btn.textContent = "🌙";
+      }
+    };
+    document.body.appendChild(btn);
+  }
 });
 
 //Handles startup UI initialization and background music setup

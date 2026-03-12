@@ -45,6 +45,7 @@
 
       <div class="topHeader">
         <h1 id="quizTitle">Quiz tìm chuyên ngành hẹp phù hợp (CNTT)</h1>
+        <div id="quizProgress" class="quiz-progress">0 / 20 câu đã trả lời</div>
       </div>
 
       <div class="pageLayout">
@@ -1535,6 +1536,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Toast notification -->
+    <div id="quizToast" class="quiz-toast"></div>
 
     <!-- Music button -->
     <button id="musicToggle" onclick="toggleMusic()"
