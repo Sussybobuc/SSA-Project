@@ -12,17 +12,27 @@
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
       <div class="nav-container">
-        <div class="nav-brand">Bright Ways</div>
-        <ul class="nav-menu">
-          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
-          <li><a href="career.html" class="nav-link active">Tư vấn AI</a></li>
-          <li><a href="../Quiz section/quiz.html" class="nav-link">Quiz</a></li>
-          <li><a href="../about.html" class="nav-link">Giới thiệu</a></li>
-        </ul>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="nav-left">
+          <div class="nav-controls">
+            <button class="nav-btn" onclick="history.back()" title="Quay lại">&#8592;</button>
+            <button class="nav-btn" onclick="history.forward()" title="Tiến tới">&#8594;</button>
+            <button class="nav-btn" onclick="location.reload()" title="Tải lại">&#8635;</button>
+          </div>
+          <div class="nav-brand">Bright Ways</div>
+        </div>
+        <span class="nav-date" id="navDate"></span>
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+            <li><a href="career.html" class="nav-link active">Tư vấn AI</a></li>
+            <li><a href="../Quiz section/quiz.html" class="nav-link">Quiz</a></li>
+            <li><a href="../about.html" class="nav-link">Giới thiệu</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </nav>

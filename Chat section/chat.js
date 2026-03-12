@@ -17,6 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  /* ===== NAV DATE ===== */
+  function updateNavDate() {
+    const el = document.getElementById("navDate");
+    if (!el) return;
+    const now = new Date();
+    const formatted = now.toLocaleDateString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    });
+    el.textContent = "📅 " + formatted;
+  }
+  updateNavDate();
+  setInterval(updateNavDate, 60000);
 });
 
 function typeText(element, text, speed = 20) {
