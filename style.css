@@ -33,6 +33,76 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-btn {
+  width: 30px;
+  max-width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  box-shadow: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fbbf24;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.nav-btn:active {
+  transform: scale(0.9);
+}
+
+.nav-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 5px 14px;
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
 }
 
 .nav-brand {
@@ -135,6 +205,10 @@ html, body {
 
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .nav-date {
+    display: none;
   }
 
   body {
