@@ -137,9 +137,33 @@ function addMessage(text, type) {
 
   return bubble; // 👉 để typing effect dùng
 }
+
+const CHAT_HISTORY_KEY = "careerAI_history";
+const CHAT_GREETING = "Xin chào 👋 Tôi có thể giúp gì cho bạn?";
+
+function getChatHistory() {
+  return JSON.parse(localStorage.getItem(CHAT_HISTORY_KEY)) || [];
+}
+
+function renderConversation(history) {
+  const chatBody = document.getElementById("chatBody");
+  if (!chatBody) return;
+  chatBody.innerHTML = "";
+
+  if (history.length === 0) {
+    addMessage(CHAT_GREETING, "ai");
+    return;
+  }
+
+  history.forEach((item) => {
+    addMessage(item.question, "user");
+    addMessage(item.answer, "ai");
+  });
+}
+
 // ===== LỊCH SỬ CHAT =====
 function saveChatHistory(question, answer) {
-  const history = JSON.parse(localStorage.getItem("careerAI_history")) || [];
+  const history = getChatHistory();
 
   history.push({
     question,
@@ -150,7 +174,7 @@ function saveChatHistory(question, answer) {
   // Giới hạn 10 lượt chat gần nhất
   if (history.length > 10) history.shift();
 
-  localStorage.setItem("careerAI_history", JSON.stringify(history));
+  localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(history));
   renderHistoryBox();
 }
 
@@ -160,7 +184,7 @@ function renderHistoryBox() {
 
   list.innerHTML = "";
 
-  const history = JSON.parse(localStorage.getItem("careerAI_history")) || [];
+  const history = getChatHistory();
 
   history.slice().reverse().forEach((item, index) => {
     const li = document.createElement("li");
@@ -172,11 +196,9 @@ function renderHistoryBox() {
         ? item.question.slice(0, 40) + "..."
         : item.question;
 
+    const realIndex = history.length - 1 - index;
     text.onclick = () => {
-      const chatBody = document.getElementById("chatBody");
-      chatBody.innerHTML = "";
-      addMessage(item.question, "user");
-      addMessage(item.answer, "ai");
+      renderConversation(history.slice(0, realIndex + 1));
     };
 
     const del = document.createElement("span");
@@ -193,25 +215,19 @@ function renderHistoryBox() {
   });
 }
 function loadChatHistory() {
-  const history = JSON.parse(localStorage.getItem("careerAI_history")) || [];
-  if (history.length === 0) return;
-
-  const chatBody = document.getElementById("chatBody");
-  chatBody.innerHTML = "";
-
-  const last = history[history.length - 1];
-  addMessage(last.question, "user");
-  addMessage(last.answer, "ai");
+  const history = getChatHistory();
+  renderConversation(history);
 }
 // Delete history
 function removeHistory(index, element) {
   element.classList.add("fade-out");
 
   setTimeout(() => {
-    let history = JSON.parse(localStorage.getItem("careerAI_history")) || [];
+    let history = getChatHistory();
     history.splice(history.length - 1 - index, 1);
-    localStorage.setItem("careerAI_history", JSON.stringify(history));
+    localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(history));
     renderHistoryBox();
+    loadChatHistory();
   }, 250);
 }
 
@@ -222,11 +238,19 @@ function clearHistory() {
   list.classList.add("fade-out");
 
   setTimeout(() => {
-    localStorage.removeItem("careerAI_history");
+    localStorage.removeItem(CHAT_HISTORY_KEY);
     renderHistoryBox();
+    loadChatHistory();
     list.classList.remove("fade-out");
   }, 250);
 }
+
+function startNewChat() {
+  renderConversation([]);
+  const input = document.getElementById("career-question");
+  if (input) input.focus();
+}
+
 const toggleBtn = document.getElementById("toggleHistory");
 const sidebar = document.getElementById("historySidebar");
 
@@ -244,8 +268,9 @@ function closeConfirm() {
 }
 
 function confirmClear() {
-  localStorage.removeItem("careerAI_history");
-  renderHistoryBox(); // render lại sidebar
+  localStorage.removeItem(CHAT_HISTORY_KEY);
+  renderHistoryBox();
+  loadChatHistory();
   closeConfirm();
 }
 

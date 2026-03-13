@@ -395,6 +395,8 @@ body.dark .history-sidebar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
@@ -410,19 +412,35 @@ body.dark .history-header h3 {
   color: #e5e7eb;
 }
 
-/* CLEAR BUTTON */
+/* HISTORY ACTION BUTTONS */
+.new-chat-btn,
 .clear-btn {
   font-size: 15px;
   background: transparent;
   border: none;
-  color: #ef4444;
   cursor: pointer;
   transition: all 0.35s ease;
   font-weight: bolder;
 }
 
+.new-chat-btn {
+  color: #2563eb;
+}
+
+.new-chat-btn:hover {
+  text-decoration: underline;
+}
+
+.clear-btn {
+  color: #ef4444;
+}
+
 .clear-btn:hover {
   text-decoration: underline;
+}
+
+body.dark .new-chat-btn {
+  color: #60a5fa;
 }
 
 /* LIST */

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diễn đàn - Bright Ways</title>
+  <link rel="icon" type="image/x-icon" href="../Website Materials/favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="forum.css" />
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="nav-controls">
+          <button class="nav-btn" onclick="history.back()" title="Quay lại">&#8592;</button>
+          <button class="nav-btn" onclick="history.forward()" title="Tiến tới">&#8594;</button>
+          <button class="nav-btn" onclick="location.reload()" title="Tải lại">&#8635;</button>
+        </div>
+        <div class="nav-brand">Bright Ways</div>
+      </div>
+      <span class="nav-date" id="navDate"></span>
+      <div class="nav-right">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="../Chat section/career.html" class="nav-link">Tư vấn AI</a></li>
+          <li><a href="forum.html" class="nav-link active">Diễn đàn</a></li>
+          <li><a href="../Quiz section/quiz.html" class="nav-link">Quiz</a></li>
+          <li><a href="../about.html" class="nav-link">Giới thiệu</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1>🧪 Diễn đàn thảo luận</h1>
+      <p class="topbar-sub"></p>
+    </div>
+    <div class="topbar-actions">
+      <button id="themeToggle" class="theme-toggle" type="button">🌙</button>
+      <span id="userBadge" class="user-badge">Chưa đặt tên</span>
+      <button id="authToggle" class="auth-toggle" type="button">Hồ sơ / Đăng nhập</button>
+      <span id="adminBadge" class="admin-badge hidden">🛡️ Admin mode</span>
+      <button id="adminToggle" class="admin-toggle" type="button">Admin</button>
+      <button id="composerToggle" class="composer-toggle" type="button">+ Tạo chủ đề</button>
+    </div>
+  </header>
+
+  <main class="feed-wrap">
+    <section class="panel list-panel">
+      <div class="list-header">
+        <h2>Bảng tin thảo luận</h2>
+        <div id="feedZoneGroup" class="zone-switch" role="tablist" aria-label="Chọn khu vực forum">
+          <button type="button" class="zone-chip active" data-zone="main">📘 Forum chính</button>
+          <button type="button" class="zone-chip" data-zone="chill">🎉 Chill / Shit-post</button>
+        </div>
+        <div id="filterCategoryGroup" class="category-filter" role="tablist" aria-label="Lọc danh mục">
+        </div>
+      </div>
+      <div id="threadList"></div>
+    </section>
+  </main>
+
+  <div id="composerBackdrop" class="composer-backdrop"></div>
+
+  <div id="authModal" class="auth-modal">
+    <div class="auth-card panel">
+      <div class="auth-header">
+        <h3>👤 Hồ sơ forum</h3>
+        <button id="authClose" class="auth-close" type="button">✕</button>
+      </div>
+      <label for="authUsername">Tên hiển thị</label>
+      <input id="authUsername" type="text" maxlength="30" placeholder="Nhập username..." />
+      <label class="auth-check">
+        <input id="authAnonymousDefault" type="checkbox" />
+        Mặc định bình luận ẩn danh
+      </label>
+      <button id="authSave" class="auth-save" type="button">Lưu hồ sơ</button>
+    </div>
+  </div>
+
+  <div id="adminModal" class="auth-modal">
+    <div class="auth-card panel">
+      <div class="auth-header">
+        <h3>🛡️ Admin login</h3>
+        <button id="adminClose" class="auth-close" type="button">✕</button>
+      </div>
+      <label for="adminPassword">Mật khẩu admin</label>
+      <input id="adminPassword" type="password" maxlength="40" placeholder="Nhập mật khẩu..." />
+      <p id="adminError" class="admin-error"></p>
+      <button id="adminLogin" class="auth-save" type="button">Đăng nhập admin</button>
+    </div>
+  </div>
+
+  <div id="deleteConfirmModal" class="auth-modal">
+    <div class="auth-card panel">
+      <div class="auth-header">
+        <h3>⚠️ Xác nhận xóa</h3>
+      </div>
+      <p id="deleteConfirmText" class="delete-confirm-text">Bạn có chắc muốn xóa?</p>
+      <div class="delete-confirm-actions">
+        <button id="deleteConfirmCancel" class="auth-close" type="button">Hủy</button>
+        <button id="deleteConfirmOk" class="admin-delete-btn" type="button">Xóa</button>
+      </div>
+    </div>
+  </div>
+
+  <aside id="composerDrawer" class="composer-drawer panel" aria-hidden="true">
+    <div class="composer-header">
+      <h2>Tạo chủ đề</h2>
+      <div style="display:flex; gap:8px;">
+        <button id="composerMinimize" class="composer-close" type="button" title="Thu nhỏ (Lưu nháp)">_</button>
+        <button id="composerClose" class="composer-close" type="button" title="Đóng">✕</button>
+      </div>
+    </div>
+
+    <form id="threadForm">
+      <label for="threadTitle">Tiêu đề</label>
+      <input id="threadTitle" type="text" maxlength="120" placeholder="Ví dụ: Nên chọn SE hay AI?" required />
+
+      <label for="threadZone">Khu vực</label>
+      <input id="threadZone" type="hidden" value="main" />
+      <div id="threadZoneGroup" class="zone-switch" role="tablist" aria-label="Chọn khu vực đăng bài">
+        <button type="button" class="zone-chip active" data-zone="main">📘 Forum chính</button>
+        <button type="button" class="zone-chip" data-zone="chill">🎉 Chill / Shit-post</button>
+      </div>
+
+      <label for="threadCategory">Danh mục</label>
+      <input id="threadCategory" type="hidden" value="Hỏi đáp chuyên ngành" />
+      <div id="threadCategoryGroup" class="composer-categories" role="tablist" aria-label="Chọn danh mục">
+      </div>
+
+      <label for="threadContent">Nội dung</label>
+      <textarea id="threadContent" rows="5" maxlength="1200" placeholder="Nhập nội dung thảo luận..." required></textarea>
+
+      <button type="submit">Đăng chủ đề</button>
+    </form>
+  </aside>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="forum.js"></script>
+</body>
+</html>

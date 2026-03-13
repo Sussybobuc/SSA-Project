@@ -234,34 +234,29 @@ h1 {
 }
 
 .container {
-  display: flex;
+  width: min(1280px, calc(100% - 40px));
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: fit-content;
-}
-
-body .container {
-  display: block;
+  align-items: start;
 }
 
 .column {
   background: white;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 15px;
-  min-width: 240px;
+  min-width: 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-right: 15px;
-  margin: 0% auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
 }
 .button-group {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: column;
+  gap: 12px;
 }
 .column-title {
   background: #f97316;
@@ -269,9 +264,17 @@ body .container {
   padding: 12px;
   border-radius: 8px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 6px;
   text-align: center;
 
+}
+
+.column button {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 17px;
 }
 
 .grid {
@@ -322,12 +325,37 @@ button:active{
 
 /* Ngành khác – disabled */
 .column.disabled {
-  opacity: 0.5;
+  opacity: 1;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px dashed #cbd5e1;
+}
+
+.column.disabled .column-title {
+  background: #64748b;
 }
 
 .column.disabled button {
-  background: #e5e7eb;
+  background: #e2e8f0;
+  color: #64748b;
+  border-color: #cbd5e1;
   cursor: not-allowed;
+}
+
+.column.disabled button:hover {
+  background: #e2e8f0;
+  transform: none;
+  box-shadow: none;
+}
+
+.coming-soon {
+  margin: -2px 0 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  background: #e2e8f0;
+  text-align: center;
 }
 
 /* Toast thông báo */
@@ -719,6 +747,27 @@ body.dark .column.active button:hover {
 body.dark .column.disabled button {
   background: #374151;
   color: #9ca3af;
+  border-color: #475569;
+}
+
+body.dark .column.disabled button:hover {
+  background: #374151;
+  box-shadow: none;
+  transform: none;
+}
+
+body.dark .column.disabled {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  border-color: #334155;
+}
+
+body.dark .column.disabled .column-title {
+  background: #475569;
+}
+
+body.dark .coming-soon {
+  color: #cbd5e1;
+  background: #334155;
 }
 
 body.dark button {
