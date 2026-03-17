@@ -1,0 +1,23 @@
+{
+  "threads": [
+    {
+      "id": "seed-main-1",
+      "zone": "main",
+      "title": "Nên bắt đầu từ đâu nếu muốn theo AI?",
+      "category": "Hỏi đáp chuyên ngành",
+      "content": "Mình đang học năm 1 và muốn theo AI. Nên tập trung Python, Toán hay project trước?",
+      "createdAt": "2026-03-17T11:08:56.217Z",
+      "likes": 2,
+      "comments": [
+        {
+          "id": "seed-comment-1",
+          "text": "Bắt đầu Python + xác suất thống kê cơ bản trước nhé.",
+          "author": "MentorA",
+          "anonymous": false,
+          "createdAt": "2026-03-17T11:08:56.218Z"
+        }
+      ]
+    }
+  ],
+  "reports": []
+}
