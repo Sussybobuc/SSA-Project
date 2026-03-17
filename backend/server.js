@@ -220,7 +220,8 @@ async function handle(req, res) {
   // Serve static files from the project root (one level up from /backend)
   if (method === "GET" && !pathname.startsWith("/forum") && pathname !== "/health") {
     const ROOT = path.join(__dirname, "..");
-    let filePath = path.join(ROOT, pathname === "/" ? "index.html" : pathname);
+    const decodedPathname = decodeURIComponent(pathname);
+    let filePath = path.join(ROOT, decodedPathname === "/" ? "index.html" : decodedPathname);
     filePath = filePath.split("?")[0];
     try {
       const data = await fs.readFile(filePath);
