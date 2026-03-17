@@ -381,7 +381,7 @@ async function handle(req, res) {
 
     try {
       const geminiRes = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
         {
           method: "POST",
           headers: {
@@ -398,6 +398,8 @@ async function handle(req, res) {
       );
 
       const data = await geminiRes.json();
+      console.log("Gemini response status:", geminiRes.status);
+      console.log("Gemini response body:", JSON.stringify(data));
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Không có phản hồi từ AI.";
       sendJson(res, 200, { reply });
     } catch (err) {
