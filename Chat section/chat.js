@@ -80,26 +80,9 @@ function typeText(element, text, speed = 20) {
 
   typing();
 }
-// ===== DARK MODE =====
-const themeToggle = document.getElementById("themeToggle");
 
-// Load trạng thái đã lưu
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  themeToggle.textContent = "☀️";
-}
+const CHAT_HISTORY_KEY = "brightways_chat_history_v1";
 
-themeToggle.onclick = () => {
-  document.body.classList.toggle("dark");
-
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    themeToggle.textContent = "☀️";
-  } else {
-    localStorage.setItem("theme", "light");
-    themeToggle.textContent = "🌙";
-  }
-};
 // ===== CHATBOT =====
 
 async function askCareerAI() {
@@ -302,14 +285,6 @@ function startNewChat() {
   if (input) input.focus();
 }
 
-const toggleBtn = document.getElementById("toggleHistory");
-const sidebar = document.getElementById("historySidebar");
-
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-  toggleBtn.textContent = sidebar.classList.contains("active") ? "✕" : "☰";
-});
-
 function openConfirm() {
   document.getElementById("confirmOverlay").classList.add("active");
 }
@@ -327,11 +302,43 @@ function confirmClear() {
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Theme init
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      themeToggle.textContent = "☀️";
+    }
+    themeToggle.onclick = () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙";
+      }
+    };
+  }
+
+  // History sidebar toggle
+  const toggleBtn = document.getElementById("toggleHistory");
+  const sidebar = document.getElementById("historySidebar");
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+      toggleBtn.textContent = sidebar.classList.contains("active") ? "✕" : "☰";
+    });
+  }
+
+  // Load chat history
   loadChatHistory();
   renderHistoryBox();
-  document
-    .getElementById("sendBtn")
-    .addEventListener("click", askCareerAI);
+
+  // Wire up send button
+  document.getElementById("sendBtn").addEventListener("click", askCareerAI);
+
+  // Wire up Enter key
   const input = document.getElementById("career-question");
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
