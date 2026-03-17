@@ -1,8 +1,38 @@
 const http = require("node:http");
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const { URL } = require("node:url");
 
+const MIME = {
+  ".html": "text/html; charset=utf-8",
+  ".css":  "text/css; charset=utf-8",
+  ".js":   "application/javascript; charset=utf-8",
+  ".ico":  "image/x-icon",
+  ".png":  "image/png",
+  ".jpg":  "image/jpeg",
+  ".svg":  "image/svg+xml",
+  ".woff2":"font/woff2",
+  ".woff": "font/woff",
+};
+
+// Add this FIRST inside your handle() function, before the /health check:
+// Serve static files from the project root (one level up from /backend)
+if (method === "GET" && !pathname.startsWith("/forum") && pathname !== "/health") {
+  const ROOT = path.join(__dirname, ".."); // go up from /backend to project root
+  let filePath = path.join(ROOT, pathname === "/" ? "index.html" : pathname);
+  // strip query strings
+  filePath = filePath.split("?")[0];
+  try {
+    const data = await fs.readFile(filePath);
+    const ext = path.extname(filePath).toLowerCase();
+    res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+    res.end(data);
+    return;
+  } catch {
+    // File not found, fall through to 404
+  }
+}
+
+const { URL } = require("node:url");
 const PORT = Number(process.env.PORT || 3001);
 const ADMIN_PASSWORD = process.env.FORUM_ADMIN_PASSWORD || "admin123";
 const DATA_DIR = path.join(__dirname, "data");
