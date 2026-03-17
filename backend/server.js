@@ -5,6 +5,7 @@ const { URL } = require("node:url");
 
 const PORT = Number(process.env.PORT || 8080);
 const ADMIN_PASSWORD = process.env.FORUM_ADMIN_PASSWORD || "admin123";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 // Use /home for persistence on Azure, fallback to local for dev
 const DATA_DIR = process.env.DATA_DIR ||

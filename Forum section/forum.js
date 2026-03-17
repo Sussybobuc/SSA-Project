@@ -1,6 +1,4 @@
-const API_BASE = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "http://localhost:3001"
-  : "https://ssa-project.azurewebsites.net";
+const API_BASE = "";
 const USER_STORAGE_KEY = "brightways_forum_user_v1";
 const ADMIN_STORAGE_KEY = "brightways_forum_admin_v1";
 const ADMIN_PASSWORD = "admin123"; // In real app, dont store this in client code
