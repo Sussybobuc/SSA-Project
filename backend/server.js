@@ -357,6 +357,56 @@ async function handle(req, res) {
     return;
   }
 
+  if (method === "POST" && pathname === "/chat") {
+    const body = await parseJsonBody(req);
+    const message = String(body.message || "").trim();
+
+    if (message === "__ping__") {
+      sendJson(res, 200, { reply: "pong" });
+      return;
+    }
+
+    if (!message) {
+      throw Object.assign(new Error("message is required"), { statusCode: 400 });
+    }
+
+    if (message.length > 2000) {
+      throw Object.assign(new Error("message too long (max 2000 characters)"), { statusCode: 400 });
+    }
+
+    if (!GEMINI_API_KEY) {
+      sendJson(res, 200, { reply: "AI chưa được cấu hình." });
+      return;
+    }
+
+    try {
+      const geminiRes = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_API_KEY
+          },
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: "Bạn là cố vấn hướng nghiệp CNTT cho sinh viên Việt Nam. Hãy trả lời ngắn gọn, dễ hiểu, thực tế. Tất cả câu trả lời đều bằng tiếng Việt." }]
+            },
+            contents: [{ parts: [{ text: message }] }]
+          })
+        }
+      );
+
+      const data = await geminiRes.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Không có phản hồi từ AI.";
+      sendJson(res, 200, { reply });
+    } catch (err) {
+      console.error("Gemini API error:", err);
+      sendJson(res, 200, { reply: "❌ Không thể kết nối AI lúc này." });
+    }
+    return;
+  }
+
   throw Object.assign(new Error("Route not found"), { statusCode: 404 });
 }
 
