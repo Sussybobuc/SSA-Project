@@ -1,0 +1,16 @@
+{
+  "name": "bright-ways-backend",
+  "version": "1.0.0",
+  "description": "Bright Ways – Forum backend API server",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["brightways", "forum", "nodejs"],
+  "author": "SSA101 Group 2",
+  "license": "MIT"
+}

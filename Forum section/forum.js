@@ -1,4 +1,6 @@
-const API_BASE = "";
+const API_BASE = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+  ? "http://localhost:3001"
+  : "https://ssa-project.azurewebsites.net";
 const USER_STORAGE_KEY = "brightways_forum_user_v1";
 const ADMIN_STORAGE_KEY = "brightways_forum_admin_v1";
 const ADMIN_PASSWORD = "admin123"; // In real app, dont store this in client code
@@ -366,7 +368,35 @@ document.addEventListener("DOMContentLoaded", () => {
   renderComposerCategories("main", ZONE_CONFIG.main.categories[0]);
   updateUserBadge();
   updateAdminUI();
-  
+
+  /* ===== HAMBURGER MENU (accessibility) ===== */
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  if (hamburger && navMenu) {
+    hamburger.setAttribute("aria-label", "Mở menu điều hướng");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("role", "button");
+    hamburger.setAttribute("tabindex", "0");
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); hamburger.click(); }
+    });
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", hamburger.classList.contains("active") ? "true" : "false");
+    });
+    navMenu.setAttribute("role", "menubar");
+    navMenu.querySelectorAll(".nav-link").forEach(link => {
+      link.setAttribute("role", "menuitem");
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+    navMenu.querySelectorAll(".nav-link.active").forEach(l => l.setAttribute("aria-current", "page"));
+  }
+
   // Initial Load
   fetchThreads();
 
@@ -647,5 +677,23 @@ document.addEventListener("DOMContentLoaded", () => {
       closeDeleteConfirm();
     }
   });
+
+  /* ===== EASTER EGG (Konami Code) ===== */
+  const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let konamiIdx = 0;
+  document.addEventListener("keydown", (e) => {
+    konamiIdx = (e.key === KONAMI[konamiIdx]) ? konamiIdx + 1 : (e.key === KONAMI[0] ? 1 : 0);
+    if (konamiIdx === KONAMI.length) { konamiIdx = 0; _showEasterEgg(); }
+  });
+  function _showEasterEgg() {
+    const existing = document.getElementById("easterEggPopup");
+    if (existing) existing.remove();
+    const popup = document.createElement("div");
+    popup.id = "easterEggPopup";
+    popup.className = "easter-egg-popup";
+    popup.innerHTML = `<div class="egg-inner"><div class="egg-emoji">🥚✨</div><h2>Bạn tìm ra Easter Egg!</h2><p>Chúc mừng! Bạn đã nhập Konami Code thành công.</p><p style="font-size:1.5rem">🎮🎉🚀🌟💻</p><p><em>↑↑↓↓←→←→BA — Bright Ways secret unlocked!</em></p><button onclick="document.getElementById('easterEggPopup').remove()">Đóng</button></div>`;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 8000);
+  }
 });
 

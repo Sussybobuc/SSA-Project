@@ -71,12 +71,23 @@ body {
 }
 
 .nav-date {
-  color: #94a3b8;
-  font-size: 0.85rem;
-  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 5px 14px;
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 600;
   white-space: nowrap;
+  letter-spacing: 0.4px;
   pointer-events: none;
-  user-select: none;
+  backdrop-filter: blur(4px);
 }
 
 .nav-brand {
@@ -311,7 +322,7 @@ label {
   max-height: 90vh;
   overflow-y: auto;
   right: 10px;
-  top: 20px;
+  top: 80px;
   width: 320px;
   opacity: 1;
   transform: translateY(0);
@@ -546,6 +557,24 @@ label {
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
 }
 
+.btn-share {
+  background: #10b981;
+  color: white;
+  margin-top: 12px;
+  width: 100%;
+}
+.btn-share:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+body.dark .btn-share {
+  background: #059669;
+}
+body.dark .btn-share:hover {
+  background: #047857;
+}
+
 /* Left column */
 .leftCol {
   background: white;
@@ -698,4 +727,65 @@ body.dark .quiz-progress.complete {
 
 body.dark .quiz-toast {
   background: #334155;
+}
+
+body.dark .top,
+body.dark .top2 {
+  background: linear-gradient(135deg, #422006 0%, #78350f 100%);
+  color: #fde68a;
+}
+
+body.dark .explain {
+  color: #cbd5e1;
+}
+
+/* ===== EASTER EGG POPUP ===== */
+.easter-egg-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  animation: eggFadeIn 0.4s ease;
+}
+@keyframes eggFadeIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.egg-inner {
+  background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+  color: white;
+  text-align: center;
+  padding: 40px 50px;
+  border-radius: 20px;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.egg-emoji { font-size: 3rem; margin-bottom: 10px; }
+.egg-inner h2 { margin: 0 0 10px; font-size: 1.6rem; }
+.egg-inner p  { color: #cbd5e1; margin: 8px 0; }
+.egg-inner button {
+  margin-top: 20px;
+  padding: 10px 28px;
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.egg-inner button:hover { background: #ea580c; }
+
+/* ===== ACCESSIBILITY: focus-visible outlines ===== */
+.nav-link:focus-visible,
+.nav-btn:focus-visible,
+.hamburger:focus-visible,
+button:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
 }
