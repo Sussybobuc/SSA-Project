@@ -6,18 +6,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const navMenu = document.querySelector(".nav-menu");
   
   if (hamburger && navMenu) {
+    hamburger.setAttribute("aria-label", "Mở menu điều hướng");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("role", "button");
+    hamburger.setAttribute("tabindex", "0");
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); hamburger.click(); }
+    });
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navMenu.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", hamburger.classList.contains("active") ? "true" : "false");
     });
 
     // Close menu when clicking on a link
     document.querySelectorAll(".nav-link").forEach(link => {
+      link.setAttribute("role", "menuitem");
       link.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
       });
     });
+    navMenu.setAttribute("role", "menubar");
+    navMenu.querySelectorAll(".nav-link.active").forEach(l => l.setAttribute("aria-current", "page"));
   }
 
   /* ===== NAV DATE ===== */
@@ -57,6 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
     document.body.appendChild(btn);
+  }
+
+  /* ===== EASTER EGG (Konami Code) ===== */
+  const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let konamiIdx = 0;
+  document.addEventListener("keydown", (e) => {
+    konamiIdx = (e.key === KONAMI[konamiIdx]) ? konamiIdx + 1 : (e.key === KONAMI[0] ? 1 : 0);
+    if (konamiIdx === KONAMI.length) { konamiIdx = 0; _showEasterEgg(); }
+  });
+  function _showEasterEgg() {
+    const existing = document.getElementById("easterEggPopup");
+    if (existing) existing.remove();
+    const popup = document.createElement("div");
+    popup.id = "easterEggPopup";
+    popup.className = "easter-egg-popup";
+    popup.innerHTML = `<div class="egg-inner"><div class="egg-emoji">🥚✨</div><h2>Bạn tìm ra Easter Egg!</h2><p>Chúc mừng! Bạn đã nhập Konami Code thành công.</p><p style="font-size:1.5rem">🎮🎉🚀🌟💻</p><p><em>↑↑↓↓←→←→BA — Bright Ways secret unlocked!</em></p><button onclick="document.getElementById('easterEggPopup').remove()">Đóng</button></div>`;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 8000);
   }
 });
 
@@ -395,6 +425,21 @@ form.addEventListener("submit", function(e) {
   `;
   stickyWrap.classList.remove("hidden");
   resultBox.classList.remove("hidden");
+
+  // Wire up share button
+  const shareBtn = document.getElementById("shareResultBtn");
+  if (shareBtn) {
+    shareBtn.onclick = () => {
+      const text = `🎯 Kết quả Quiz Bright Ways\n${top1.textContent}\n${top2.textContent}\n\nKiểm tra của bạn tại: ${window.location.href}`;
+      navigator.clipboard.writeText(text).then(() => {
+        shareBtn.textContent = "✅ Đã sao chép!";
+        setTimeout(() => { shareBtn.textContent = "📋 Sao chép kết quả"; }, 2000);
+      }).catch(() => {
+        shareBtn.textContent = "❌ Không thể sao chép";
+        setTimeout(() => { shareBtn.textContent = "📋 Sao chép kết quả"; }, 2000);
+      });
+    };
+  }
 });
 
 resetBtn.addEventListener("click", function() {

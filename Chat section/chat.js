@@ -4,18 +4,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const navMenu = document.querySelector(".nav-menu");
   
   if (hamburger && navMenu) {
+    hamburger.setAttribute("aria-label", "Mở menu điều hướng");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("role", "button");
+    hamburger.setAttribute("tabindex", "0");
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); hamburger.click(); }
+    });
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navMenu.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", hamburger.classList.contains("active") ? "true" : "false");
     });
 
     // Close menu when clicking on a link
     document.querySelectorAll(".nav-link").forEach(link => {
+      link.setAttribute("role", "menuitem");
       link.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
       });
     });
+    navMenu.setAttribute("role", "menubar");
+    navMenu.querySelectorAll(".nav-link.active").forEach(l => l.setAttribute("aria-current", "page"));
   }
 
   /* ===== NAV DATE ===== */
@@ -33,6 +45,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateNavDate();
   setInterval(updateNavDate, 60000);
+
+  /* ===== EASTER EGG (Konami Code) ===== */
+  const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let konamiIdx = 0;
+  document.addEventListener("keydown", (e) => {
+    konamiIdx = (e.key === KONAMI[konamiIdx]) ? konamiIdx + 1 : (e.key === KONAMI[0] ? 1 : 0);
+    if (konamiIdx === KONAMI.length) { konamiIdx = 0; _showEasterEgg(); }
+  });
+  function _showEasterEgg() {
+    const existing = document.getElementById("easterEggPopup");
+    if (existing) existing.remove();
+    const popup = document.createElement("div");
+    popup.id = "easterEggPopup";
+    popup.className = "easter-egg-popup";
+    popup.innerHTML = `<div class="egg-inner"><div class="egg-emoji">🥚✨</div><h2>Bạn tìm ra Easter Egg!</h2><p>Chúc mừng! Bạn đã nhập Konami Code thành công.</p><p style="font-size:1.5rem">🎮🎉🚀🌟💻</p><p><em>↑↑↓↓←→←→BA — Bright Ways secret unlocked!</em></p><button onclick="document.getElementById('easterEggPopup').remove()">Đóng</button></div>`;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 8000);
+  }
 });
 
 function typeText(element, text, speed = 20) {
@@ -50,26 +80,9 @@ function typeText(element, text, speed = 20) {
 
   typing();
 }
-// ===== DARK MODE =====
-const themeToggle = document.getElementById("themeToggle");
 
-// Load trạng thái đã lưu
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  themeToggle.textContent = "☀️";
-}
+const CHAT_HISTORY_KEY = "brightways_chat_history_v1";
 
-themeToggle.onclick = () => {
-  document.body.classList.toggle("dark");
-
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    themeToggle.textContent = "☀️";
-  } else {
-    localStorage.setItem("theme", "light");
-    themeToggle.textContent = "🌙";
-  }
-};
 // ===== CHATBOT =====
 
 async function askCareerAI() {
@@ -138,7 +151,28 @@ function addMessage(text, type) {
   return bubble; // 👉 để typing effect dùng
 }
 
-const CHAT_HISTORY_KEY = "careerAI_history";
+// ===== AI STATUS CHECK =====
+async function checkAIStatus() {
+  const badge = document.getElementById("aiStatusBadge");
+  if (!badge) return;
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "__ping__" }),
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+    badge.textContent = "🟢 AI sẵn sàng";
+    badge.className = "ai-status online";
+  } catch {
+    badge.textContent = "🔴 AI offline";
+    badge.className = "ai-status offline";
+  }
+}
+checkAIStatus();
 const CHAT_GREETING = "Xin chào 👋 Tôi có thể giúp gì cho bạn?";
 
 function getChatHistory() {
@@ -251,14 +285,6 @@ function startNewChat() {
   if (input) input.focus();
 }
 
-const toggleBtn = document.getElementById("toggleHistory");
-const sidebar = document.getElementById("historySidebar");
-
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-  toggleBtn.textContent = sidebar.classList.contains("active") ? "✕" : "☰";
-});
-
 function openConfirm() {
   document.getElementById("confirmOverlay").classList.add("active");
 }
@@ -276,11 +302,43 @@ function confirmClear() {
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Theme init
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      themeToggle.textContent = "☀️";
+    }
+    themeToggle.onclick = () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙";
+      }
+    };
+  }
+
+  // History sidebar toggle
+  const toggleBtn = document.getElementById("toggleHistory");
+  const sidebar = document.getElementById("historySidebar");
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+      toggleBtn.textContent = sidebar.classList.contains("active") ? "✕" : "☰";
+    });
+  }
+
+  // Load chat history
   loadChatHistory();
   renderHistoryBox();
-  document
-    .getElementById("sendBtn")
-    .addEventListener("click", askCareerAI);
+
+  // Wire up send button
+  document.getElementById("sendBtn").addEventListener("click", askCareerAI);
+
+  // Wire up Enter key
   const input = document.getElementById("career-question");
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {

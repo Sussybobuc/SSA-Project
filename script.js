@@ -58,6 +58,41 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     document.body.appendChild(btn);
   }
+
+  /* ===== EASTER EGG (Konami Code) ===== */
+  const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let konamiIdx = 0;
+  document.addEventListener("keydown", (e) => {
+    if (e.key === KONAMI[konamiIdx]) {
+      konamiIdx++;
+      if (konamiIdx === KONAMI.length) {
+        konamiIdx = 0;
+        showEasterEgg();
+      }
+    } else {
+      konamiIdx = e.key === KONAMI[0] ? 1 : 0;
+    }
+  });
+
+  function showEasterEgg() {
+    const existing = document.getElementById("easterEggPopup");
+    if (existing) existing.remove();
+    const popup = document.createElement("div");
+    popup.id = "easterEggPopup";
+    popup.className = "easter-egg-popup";
+    popup.innerHTML = `
+      <div class="egg-inner">
+        <div class="egg-emoji">🥚✨</div>
+        <h2>Bạn tìm ra Easter Egg!</h2>
+        <p>Chúc mừng! Bạn đã nhập Konami Code thành công.</p>
+        <p style="font-size:1.5rem">🎮🎉🚀🌟💻</p>
+        <p><em>↑↑↓↓←→←→BA — Bright Ways secret unlocked!</em></p>
+        <button onclick="document.getElementById('easterEggPopup').remove()">Đóng</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 8000);
+  }
 });
 
 //Handles startup UI initialization and background music setup
@@ -157,10 +192,12 @@ function showToast() {
 const music = document.getElementById("bgMusic");
 
 function startMusicOnce() {
-  music.play().catch(() => {});
+  if (music) music.play().catch(() => {});
   document.removeEventListener("click", startMusicOnce);
 }
 
-// Chạy nhạc khi user click lần đầu
-document.addEventListener("click", startMusicOnce);
+// Chạy nhạc khi user click lần đầu (chỉ trên trang có bgMusic)
+if (music) {
+  document.addEventListener("click", startMusicOnce);
+}
 

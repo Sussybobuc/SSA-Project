@@ -3,10 +3,29 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 const { URL } = require("node:url");
 
-const PORT = Number(process.env.PORT || 3001);
+const PORT = Number(process.env.PORT || 8080);
 const ADMIN_PASSWORD = process.env.FORUM_ADMIN_PASSWORD || "admin123";
-const DATA_DIR = path.join(__dirname, "data");
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+// Use /home for persistence on Azure, fallback to local for dev
+const DATA_DIR = process.env.DATA_DIR ||
+  (process.env.WEBSITE_SITE_NAME ? "/home/site/wwwroot/data" : path.join(__dirname, "data"));
 const DATA_FILE = path.join(DATA_DIR, "forum.json");
+
+const MIME = {
+  ".html": "text/html; charset=utf-8",
+  ".css":  "text/css; charset=utf-8",
+  ".js":   "application/javascript; charset=utf-8",
+  ".json": "application/json",
+  ".ico":  "image/x-icon",
+  ".png":  "image/png",
+  ".jpg":  "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".svg":  "image/svg+xml",
+  ".woff2":"font/woff2",
+  ".woff": "font/woff",
+  ".ttf":  "font/ttf",
+};
 const ALLOWED_ZONES = new Set(["main", "chill"]);
 
 const DEFAULT_STORE = {
@@ -199,6 +218,23 @@ async function handle(req, res) {
   const method = req.method || "GET";
   const parsedPath = parsePath(pathname);
 
+  // Serve static files from the project root (one level up from /backend)
+  if (method === "GET" && !pathname.startsWith("/forum") && pathname !== "/health") {
+    const ROOT = path.join(__dirname, "..");
+    const decodedPathname = decodeURIComponent(pathname);
+    let filePath = path.join(ROOT, decodedPathname === "/" ? "index.html" : decodedPathname);
+    filePath = filePath.split("?")[0];
+    try {
+      const data = await fs.readFile(filePath);
+      const ext = path.extname(filePath).toLowerCase();
+      res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+      res.end(data);
+      return;
+    } catch {
+      // file not found, fall through to API routes
+    }
+  }
+
   if (method === "GET" && pathname === "/health") {
     sendJson(res, 200, { ok: true, service: "forum-backend" });
     return;
@@ -321,6 +357,58 @@ async function handle(req, res) {
     return;
   }
 
+  if (method === "POST" && pathname === "/chat") {
+    const body = await parseJsonBody(req);
+    const message = String(body.message || "").trim();
+
+    if (message === "__ping__") {
+      sendJson(res, 200, { reply: "pong" });
+      return;
+    }
+
+    if (!message) {
+      throw Object.assign(new Error("message is required"), { statusCode: 400 });
+    }
+
+    if (message.length > 2000) {
+      throw Object.assign(new Error("message too long (max 2000 characters)"), { statusCode: 400 });
+    }
+
+    if (!GEMINI_API_KEY) {
+      sendJson(res, 200, { reply: "AI chưa được cấu hình." });
+      return;
+    }
+
+    try {
+      const geminiRes = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_API_KEY
+          },
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: "Bạn là cố vấn hướng nghiệp CNTT cho sinh viên Việt Nam. Hãy trả lời ngắn gọn, dễ hiểu, thực tế. Tất cả câu trả lời đều bằng tiếng Việt." }]
+            },
+            contents: [{ parts: [{ text: message }] }]
+          })
+        }
+      );
+
+      const data = await geminiRes.json();
+      console.log("Gemini response status:", geminiRes.status);
+      console.log("Gemini response body:", JSON.stringify(data));
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Không có phản hồi từ AI.";
+      sendJson(res, 200, { reply });
+    } catch (err) {
+      console.error("Gemini API error:", err);
+      sendJson(res, 200, { reply: "❌ Không thể kết nối AI lúc này." });
+    }
+    return;
+  }
+
   throw Object.assign(new Error("Route not found"), { statusCode: 404 });
 }
 
@@ -337,5 +425,8 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Forum backend running on http://localhost:${PORT}`);
+  console.log(`SSA server running on port ${PORT}`);
+  ensureStore().catch((err) => {
+    console.error("Warning: failed to initialize data store:", err.message);
+  });
 });
